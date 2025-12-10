@@ -1,8 +1,10 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-export function CTASection() {
+export async function CTASection() {
+  const t = await getTranslations("cta");
+
   return (
     <section
       className={cn(
@@ -18,11 +20,10 @@ export function CTASection() {
       {/* Content */}
       <div className="relative max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6 text-foreground">
-          Your Global Portfolio Starts Here
+          {t("title")}
         </h2>
         <p className="text-lg mb-10 text-muted-foreground">
-          From zero knowledge to your first global property&mdash;with one
-          AI-powered platform.
+          {t("description")}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -34,10 +35,10 @@ export function CTASection() {
               "shadow-xl shadow-blue-900/10 dark:shadow-white/10"
             )}
           >
-            <Link href="#">Create Free Account</Link>
+            <a href="#">{t("button")}</a>
           </Button>
           <span className="text-sm text-muted-foreground">
-            No credit card required for Explorer plan.
+            {t("disclaimer")}
           </span>
         </div>
       </div>

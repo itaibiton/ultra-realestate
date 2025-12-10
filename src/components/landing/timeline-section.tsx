@@ -1,40 +1,43 @@
+import { getTranslations } from "next-intl/server";
 import { TimelineItem } from "@/components/shared";
 import { cn } from "@/lib/utils";
 
-const timelineSteps = [
-  {
-    title: "Discovery",
-    description:
-      "AI analyzes your finances and goals to suggest specific markets and properties tailored to you.",
-    isActive: true,
-  },
-  {
-    title: "Team Building",
-    description:
-      "Automatically connect with a lawyer, tax advisor, and lender specialized in your target region.",
-    isActive: false,
-  },
-  {
-    title: "Due Diligence",
-    description:
-      "Professionals review the asset. AI summarizes risks. You make an informed decision based on data.",
-    isActive: false,
-  },
-  {
-    title: "Closing",
-    description:
-      "Digital signing, secure fund transfer, and ownership registration via the Deal Room.",
-    isActive: false,
-  },
-  {
-    title: "Management",
-    description:
-      "Track rent collection, maintenance requests, and portfolio value in real-time.",
-    isActive: false,
-  },
-];
+export async function TimelineSection() {
+  const t = await getTranslations("timeline");
 
-export function TimelineSection() {
+  const timelineSteps = [
+    {
+      key: "discovery",
+      title: t("steps.discovery.title"),
+      description: t("steps.discovery.description"),
+      isActive: true,
+    },
+    {
+      key: "teamBuilding",
+      title: t("steps.teamBuilding.title"),
+      description: t("steps.teamBuilding.description"),
+      isActive: false,
+    },
+    {
+      key: "dueDiligence",
+      title: t("steps.dueDiligence.title"),
+      description: t("steps.dueDiligence.description"),
+      isActive: false,
+    },
+    {
+      key: "closing",
+      title: t("steps.closing.title"),
+      description: t("steps.closing.description"),
+      isActive: false,
+    },
+    {
+      key: "management",
+      title: t("steps.management.title"),
+      description: t("steps.management.description"),
+      isActive: false,
+    },
+  ];
+
   return (
     <section
       className={cn(
@@ -47,24 +50,23 @@ export function TimelineSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl font-semibold tracking-tight mb-4 text-foreground">
-            The Complete Lifecycle
+            {t("title")}
           </h2>
           <p className="text-muted-foreground">
-            A unified timeline from your first question to your monthly passive
-            income.
+            {t("description")}
           </p>
         </div>
 
         {/* Timeline */}
         <div
           className={cn(
-            "relative pl-8 border-l space-y-12",
+            "relative ps-8 border-s space-y-12",
             "border-gray-200 dark:border-white/10"
           )}
         >
           {timelineSteps.map((step) => (
             <TimelineItem
-              key={step.title}
+              key={step.key}
               title={step.title}
               description={step.description}
               isActive={step.isActive}

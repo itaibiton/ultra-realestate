@@ -6,3 +6,4 @@ export { FeatureCard } from "./feature-card";
 export { PricingCard } from "./pricing-card";
 export { TimelineItem } from "./timeline-item";
 export { TestimonialCard } from "./testimonial-card";
+export { LanguageSwitcher } from "./language-switcher";

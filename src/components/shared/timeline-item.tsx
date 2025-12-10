@@ -17,7 +17,7 @@ export function TimelineItem({
     <div className={cn("relative", className)}>
       <div
         className={cn(
-          "absolute -left-[41px] top-1 w-5 h-5 rounded-full border bg-white dark:bg-black",
+          "absolute -start-[41px] top-1 w-5 h-5 rounded-full border bg-white dark:bg-black",
           isActive
             ? "border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"
             : "border-gray-300 dark:border-white/20"

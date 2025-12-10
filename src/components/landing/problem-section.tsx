@@ -1,35 +1,45 @@
+import { getTranslations } from "next-intl/server";
 import { Languages, Unlink, SearchX, ShieldAlert } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
 
-const problems = [
-  {
-    icon: Languages,
-    title: "Language Barriers",
-    description:
-      "Navigating foreign contracts and tax laws without a local guide is dangerous.",
-  },
-  {
-    icon: Unlink,
-    title: "Disconnected Providers",
-    description:
-      "Your lawyer doesn't talk to your mortgage broker, causing delays and lost deals.",
-  },
-  {
-    icon: SearchX,
-    title: "Zero Knowledge",
-    description:
-      "Not knowing where to invest or how to accurately assess risk in a foreign market.",
-  },
-  {
-    icon: ShieldAlert,
-    title: "Trust Deficit",
-    description:
-      "Fear of scams, unverified developers, and lack of trusted partners abroad.",
-  },
-];
+const problemIcons = {
+  languageBarriers: Languages,
+  disconnectedProviders: Unlink,
+  zeroKnowledge: SearchX,
+  trustDeficit: ShieldAlert,
+};
 
-export function ProblemSection() {
+export async function ProblemSection() {
+  const t = await getTranslations("problem");
+
+  const problems = [
+    {
+      key: "languageBarriers",
+      icon: problemIcons.languageBarriers,
+      title: t("items.languageBarriers.title"),
+      description: t("items.languageBarriers.description"),
+    },
+    {
+      key: "disconnectedProviders",
+      icon: problemIcons.disconnectedProviders,
+      title: t("items.disconnectedProviders.title"),
+      description: t("items.disconnectedProviders.description"),
+    },
+    {
+      key: "zeroKnowledge",
+      icon: problemIcons.zeroKnowledge,
+      title: t("items.zeroKnowledge.title"),
+      description: t("items.zeroKnowledge.description"),
+    },
+    {
+      key: "trustDeficit",
+      icon: problemIcons.trustDeficit,
+      title: t("items.trustDeficit.title"),
+      description: t("items.trustDeficit.description"),
+    },
+  ];
+
   return (
     <section
       className={cn(
@@ -43,12 +53,10 @@ export function ProblemSection() {
           {/* Left Column */}
           <div>
             <h2 className="text-3xl font-semibold tracking-tight mb-4 text-foreground">
-              Global Investing is Broken and Fragmented
+              {t("title")}
             </h2>
             <p className="mb-8 leading-relaxed text-muted-foreground">
-              Most investors stop before they even start because the process is
-              a disconnected maze of foreign laws, languages, and untrusted
-              vendors.
+              {t("description")}
             </p>
           </div>
 
@@ -56,7 +64,7 @@ export function ProblemSection() {
           <div className="grid sm:grid-cols-2 gap-6">
             {problems.map((problem) => (
               <ProblemCard
-                key={problem.title}
+                key={problem.key}
                 icon={problem.icon}
                 title={problem.title}
                 description={problem.description}

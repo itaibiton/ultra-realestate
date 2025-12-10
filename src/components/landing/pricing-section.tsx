@@ -1,35 +1,41 @@
+import { getTranslations } from "next-intl/server";
 import { PricingCard } from "@/components/shared";
 import { cn } from "@/lib/utils";
 
-const pricingPlans = [
-  {
-    name: "Explorer",
-    description: "For the curious",
-    price: "$0",
-    features: ["Access to Marketplace", "Basic AI Chatbot", "Educational Resources"],
-    ctaText: "Start Free",
-    popular: false,
-  },
-  {
-    name: "GlobalNest Pro",
-    description: "For the active investor",
-    price: "$49",
-    features: ["Unlimited AI Analysis", "Financing Hub Access", "Full Deal Room"],
-    ctaText: "Start Trial",
-    popular: true,
-  },
-  {
-    name: "Partner",
-    description: "For Service Providers",
-    price: "Custom",
-    period: "",
-    features: ["Verified Client Leads", "Branded Profile", "Deal Management CRM"],
-    ctaText: "Apply as Partner",
-    popular: false,
-  },
-];
+export async function PricingSection() {
+  const t = await getTranslations("pricing");
 
-export function PricingSection() {
+  const pricingPlans = [
+    {
+      key: "explorer",
+      name: t("plans.explorer.name"),
+      description: t("plans.explorer.description"),
+      price: t("plans.explorer.price"),
+      features: t.raw("plans.explorer.features") as string[],
+      ctaText: t("plans.explorer.cta"),
+      popular: false,
+    },
+    {
+      key: "pro",
+      name: t("plans.pro.name"),
+      description: t("plans.pro.description"),
+      price: t("plans.pro.price"),
+      features: t.raw("plans.pro.features") as string[],
+      ctaText: t("plans.pro.cta"),
+      popular: true,
+    },
+    {
+      key: "partner",
+      name: t("plans.partner.name"),
+      description: t("plans.partner.description"),
+      price: t("plans.partner.price"),
+      period: "",
+      features: t.raw("plans.partner.features") as string[],
+      ctaText: t("plans.partner.cta"),
+      popular: false,
+    },
+  ];
+
   return (
     <section
       id="pricing"
@@ -43,10 +49,10 @@ export function PricingSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl font-semibold tracking-tight mb-4 text-foreground">
-            Invest with Confidence
+            {t("title")}
           </h2>
           <p className="text-muted-foreground">
-            Choose the plan that fits your investment activity level.
+            {t("description")}
           </p>
         </div>
 
@@ -54,7 +60,7 @@ export function PricingSection() {
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {pricingPlans.map((plan) => (
             <PricingCard
-              key={plan.name}
+              key={plan.key}
               name={plan.name}
               description={plan.description}
               price={plan.price}

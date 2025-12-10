@@ -1,34 +1,41 @@
+import { getTranslations } from "next-intl/server";
 import { Languages, Map, ShieldCheck, ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
 
-const showcaseItems = [
-  {
-    icon: Languages,
-    title: "Translation & Clarity",
-    before:
-      '"Confusing 20-page foreign legal contract in Greek or Portuguese."',
-    after:
-      '"This clause requires a 10% deposit by Friday, or the deal is void. High urgency."',
-  },
-  {
-    icon: Map,
-    title: "Market Matching",
-    before: '"Spending weeks Googling \'best places to invest in Europe\'."',
-    after:
-      '"Based on your 400k NIS liquidity, Batumi and Cyprus offer the best yields. Here are 3 matches."',
-  },
-  {
-    icon: ShieldCheck,
-    title: "Risk Assessment",
-    before: '"Buying blind and hoping the developer is solvent."',
-    after:
-      '"Developer flagged for delayed delivery in 2021. We recommend using an escrow account."',
-  },
-];
+const showcaseIcons = {
+  translation: Languages,
+  marketMatching: Map,
+  riskAssessment: ShieldCheck,
+};
 
-export function AIShowcaseSection() {
+export async function AIShowcaseSection() {
+  const t = await getTranslations("aiShowcase");
+
+  const showcaseItems = [
+    {
+      key: "translation",
+      icon: showcaseIcons.translation,
+      title: t("items.translation.title"),
+      before: t("items.translation.before"),
+      after: t("items.translation.after"),
+    },
+    {
+      key: "marketMatching",
+      icon: showcaseIcons.marketMatching,
+      title: t("items.marketMatching.title"),
+      before: t("items.marketMatching.before"),
+      after: t("items.marketMatching.after"),
+    },
+    {
+      key: "riskAssessment",
+      icon: showcaseIcons.riskAssessment,
+      title: t("items.riskAssessment.title"),
+      before: t("items.riskAssessment.before"),
+      after: t("items.riskAssessment.after"),
+    },
+  ];
+
   return (
     <section className={cn("py-24", "bg-gray-50/50 dark:bg-white/[0.02]")}>
       <div className="max-w-7xl mx-auto px-6">
@@ -37,11 +44,13 @@ export function AIShowcaseSection() {
           <div className="order-2 lg:order-1 space-y-6">
             {showcaseItems.map((item) => (
               <ShowcaseCard
-                key={item.title}
+                key={item.key}
                 icon={item.icon}
                 title={item.title}
                 before={item.before}
                 after={item.after}
+                beforeLabel={t("before")}
+                afterLabel={t("after")}
               />
             ))}
           </div>
@@ -49,20 +58,18 @@ export function AIShowcaseSection() {
           {/* Right: Header */}
           <div className="order-1 lg:order-2">
             <h2 className="text-3xl font-semibold tracking-tight mb-4 text-foreground">
-              Your Intelligent Investment Co-Pilot
+              {t("title")}
             </h2>
             <p className="mb-8 leading-relaxed text-muted-foreground">
-              See how GlobalNest AI removes friction and adds clarity. The AI
-              reads contracts, analyzes markets, and spots risks faster than any
-              human agent.
+              {t("description")}
             </p>
-            <Link
+            <a
               href="#"
               className="inline-flex items-center text-sm font-medium text-foreground hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
-              See full AI capabilities
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
+              {t("cta")}
+              <ArrowRight className="ms-2 w-4 h-4" />
+            </a>
           </div>
         </div>
       </div>
@@ -75,9 +82,11 @@ interface ShowcaseCardProps {
   title: string;
   before: string;
   after: string;
+  beforeLabel: string;
+  afterLabel: string;
 }
 
-function ShowcaseCard({ icon: Icon, title, before, after }: ShowcaseCardProps) {
+function ShowcaseCard({ icon: Icon, title, before, after, beforeLabel, afterLabel }: ShowcaseCardProps) {
   return (
     <div
       className={cn(
@@ -102,13 +111,13 @@ function ShowcaseCard({ icon: Icon, title, before, after }: ShowcaseCardProps) {
         {/* Before */}
         <div
           className={cn(
-            "p-5 border-r",
+            "p-5 border-e",
             "bg-red-50 border-gray-200",
             "dark:bg-red-500/5 dark:border-white/5"
           )}
         >
           <div className="text-[10px] uppercase mb-2 font-medium text-red-600 dark:text-red-400">
-            Before
+            {beforeLabel}
           </div>
           <p className="text-xs text-muted-foreground italic">{before}</p>
         </div>
@@ -116,7 +125,7 @@ function ShowcaseCard({ icon: Icon, title, before, after }: ShowcaseCardProps) {
         {/* After */}
         <div className={cn("p-5", "bg-green-50 dark:bg-green-500/5")}>
           <div className="text-[10px] uppercase mb-2 font-medium text-green-600 dark:text-green-400">
-            GlobalNest AI
+            {afterLabel}
           </div>
           <p className="text-xs text-foreground dark:text-gray-300">{after}</p>
         </div>

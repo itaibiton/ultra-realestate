@@ -1,32 +1,47 @@
+import { getTranslations } from "next-intl/server";
 import { MessageSquarePlus, GitMerge, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
 
-const steps = [
-  {
-    icon: MessageSquarePlus,
-    title: "AI Strategy Session",
-    description:
-      "Chat with our AI advisor to define your budget and goals. We translate your reality into a roadmap.",
-    color: "blue" as const,
-  },
-  {
-    icon: GitMerge,
-    title: "The Perfect Match",
-    description:
-      "We match you with a property, a lender who will finance it, and a legal expert simultaneously.",
-    color: "purple" as const,
-  },
-  {
-    icon: CheckCircle2,
-    title: "The Deal Room",
-    description:
-      "Execute with confidence. Manage docs, sign contracts, and transfer funds in a secure vault.",
-    color: "green" as const,
-  },
-];
+const stepIcons = {
+  aiStrategy: MessageSquarePlus,
+  perfectMatch: GitMerge,
+  dealRoom: CheckCircle2,
+};
 
-export function HowItWorksSection() {
+const stepColors = {
+  aiStrategy: "blue" as const,
+  perfectMatch: "purple" as const,
+  dealRoom: "green" as const,
+};
+
+export async function HowItWorksSection() {
+  const t = await getTranslations("howItWorks");
+
+  const steps = [
+    {
+      key: "aiStrategy",
+      icon: stepIcons.aiStrategy,
+      title: t("steps.aiStrategy.title"),
+      description: t("steps.aiStrategy.description"),
+      color: stepColors.aiStrategy,
+    },
+    {
+      key: "perfectMatch",
+      icon: stepIcons.perfectMatch,
+      title: t("steps.perfectMatch.title"),
+      description: t("steps.perfectMatch.description"),
+      color: stepColors.perfectMatch,
+    },
+    {
+      key: "dealRoom",
+      icon: stepIcons.dealRoom,
+      title: t("steps.dealRoom.title"),
+      description: t("steps.dealRoom.description"),
+      color: stepColors.dealRoom,
+    },
+  ];
+
   return (
     <section
       id="how-it-works"
@@ -36,22 +51,21 @@ export function HowItWorksSection() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="text-3xl font-semibold tracking-tight mb-4 text-foreground">
-            Turning Chaos into a Guided Flow
+            {t("title")}
           </h2>
           <p className="text-muted-foreground">
-            GlobalNest replaces fragmentation with a streamlined, three-step
-            journey.
+            {t("description")}
           </p>
         </div>
 
         {/* Steps Grid */}
         <div className="grid md:grid-cols-3 gap-8 relative">
           {/* Connector Line */}
-          <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-px bg-gradient-to-r from-blue-500/0 via-blue-200 dark:via-blue-500/20 to-blue-500/0" />
+          <div className="hidden md:block absolute top-12 start-[16%] end-[16%] h-px bg-gradient-to-r from-blue-500/0 via-blue-200 dark:via-blue-500/20 to-blue-500/0" />
 
           {steps.map((step, index) => (
             <StepCard
-              key={step.title}
+              key={step.key}
               icon={step.icon}
               title={step.title}
               description={step.description}
@@ -119,7 +133,7 @@ function StepCard({
         <Icon className={cn("w-8 h-8", styles.icon)} />
         <div
           className={cn(
-            "absolute -top-3 -right-3 w-8 h-8 rounded-full border flex items-center justify-center text-sm font-mono",
+            "absolute -top-3 -end-3 w-8 h-8 rounded-full border flex items-center justify-center text-sm font-mono",
             "bg-gray-900 border-gray-700 text-white",
             "dark:bg-[#1A1A1A] dark:border-white/10"
           )}

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import {
   ArrowRight,
   Check,
@@ -11,7 +11,9 @@ import { Button } from "@/components/ui/button";
 import { AnimatedPing, GlassPanel, GradientText } from "@/components/shared";
 import { cn } from "@/lib/utils";
 
-export function HeroSection() {
+export async function HeroSection() {
+  const t = await getTranslations("hero");
+
   return (
     <section className="overflow-hidden pt-32 pb-20 relative">
       {/* Background Decorations */}
@@ -30,20 +32,18 @@ export function HeroSection() {
             )}
           >
             <AnimatedPing color="blue" size="sm" />
-            The Real Estate OS for the Global Investor
+            {t("badge")}
           </div>
 
           {/* Headline */}
           <h1 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6 leading-[1.1] text-foreground">
-            From Zero Knowledge to <br />
-            <GradientText>Your First Global Property</GradientText>
+            {t("titleLine1")} <br />
+            <GradientText>{t("titleHighlight")}</GradientText>
           </h1>
 
           {/* Description */}
           <p className="text-lg mb-8 max-w-2xl leading-relaxed text-muted-foreground">
-            The first AI-powered ecosystem that unifies property search,
-            cross-border financing, legal experts, and deal management into one
-            seamless workflow.
+            {t("description")}
           </p>
 
           {/* CTA Buttons */}
@@ -56,10 +56,10 @@ export function HeroSection() {
                 "shadow-xl shadow-black/5 dark:shadow-none"
               )}
             >
-              <Link href="#" className="flex items-center gap-2">
-                Start Your Investment Journey
+              <a href="#" className="flex items-center gap-2">
+                {t("ctaPrimary")}
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </Button>
             <Button
               asChild
@@ -71,16 +71,16 @@ export function HeroSection() {
                 "bg-white dark:bg-white/5"
               )}
             >
-              <Link href="#">For Professionals</Link>
+              <a href="#">{t("ctaSecondary")}</a>
             </Button>
           </div>
 
           {/* Feature Checkmarks */}
           <div className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs text-muted-foreground">
             {[
-              "AI-driven investment strategy",
-              "Local & International mortgages",
-              "Vetted Legal Experts",
+              t("features.aiStrategy"),
+              t("features.mortgages"),
+              t("features.legalExperts"),
             ].map((feature) => (
               <div key={feature} className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-blue-600 dark:text-blue-400" />
@@ -97,7 +97,9 @@ export function HeroSection() {
   );
 }
 
-function AIIllustrationPanel() {
+async function AIIllustrationPanel() {
+  const t = await getTranslations("hero");
+
   return (
     <GlassPanel
       className={cn(
@@ -113,7 +115,7 @@ function AIIllustrationPanel() {
         {/* Left: Chat Interface */}
         <div
           className={cn(
-            "w-full md:w-1/3 border-b md:border-b-0 md:border-r p-6 flex flex-col",
+            "w-full md:w-1/3 border-b md:border-b-0 md:border-e p-6 flex flex-col",
             "border-gray-200 dark:border-white/10",
             "bg-gray-50/50 dark:bg-black/40"
           )}
@@ -121,7 +123,7 @@ function AIIllustrationPanel() {
           <div className="flex items-center gap-2 mb-6 opacity-80 dark:opacity-60">
             <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
             <span className="text-xs font-medium uppercase tracking-widest text-foreground">
-              GlobalNest AI
+              {t("aiChat.title")}
             </span>
           </div>
 
@@ -130,13 +132,12 @@ function AIIllustrationPanel() {
             <div className="flex justify-end">
               <div
                 className={cn(
-                  "border border-blue-500/20 text-xs px-4 py-3 rounded-2xl rounded-tr-sm max-w-[90%] shadow-sm",
+                  "border border-blue-500/20 text-xs px-4 py-3 rounded-2xl rounded-se-sm max-w-[90%] shadow-sm",
                   "bg-blue-50 text-blue-900",
                   "dark:bg-blue-600/20 dark:text-blue-100"
                 )}
               >
-                I have 500k NIS liquidity. Looking for high yield, preferably
-                Europe.
+                {t("aiChat.userMessage")}
               </div>
             </div>
 
@@ -144,12 +145,12 @@ function AIIllustrationPanel() {
             <div className="flex justify-start">
               <div
                 className={cn(
-                  "border text-xs px-4 py-3 rounded-2xl rounded-tl-sm max-w-[90%] animate-pulse-slow shadow-sm",
+                  "border text-xs px-4 py-3 rounded-2xl rounded-ss-sm max-w-[90%] animate-pulse-slow shadow-sm",
                   "bg-white border-gray-200 text-gray-600",
                   "dark:bg-white/5 dark:border-white/5 dark:text-gray-300"
                 )}
               >
-                Processing liquidity parameters... Scanning 12 markets...
+                {t("aiChat.aiTyping")}
               </div>
             </div>
 
@@ -157,18 +158,18 @@ function AIIllustrationPanel() {
             <div className="flex justify-start">
               <div
                 className={cn(
-                  "border text-xs px-4 py-3 rounded-2xl rounded-tl-sm max-w-[90%] shadow-sm",
+                  "border text-xs px-4 py-3 rounded-2xl rounded-ss-sm max-w-[90%] shadow-sm",
                   "bg-white border-gray-200 text-gray-600",
                   "dark:bg-white/5 dark:border-white/5 dark:text-gray-300"
                 )}
               >
-                Based on your profile, I&apos;ve constructed a deal package in{" "}
-                <strong>Athens, Greece</strong>.
+                {t("aiChat.aiResponse")}{" "}
+                <strong>{t("aiChat.location")}</strong>.
                 <br />
                 <br />
-                &bull; Projected Yield: <strong className="text-green-600 dark:text-green-400">7.2%</strong>
+                &bull; {t("aiChat.yield")} <strong className="text-green-600 dark:text-green-400">{t("aiChat.yieldValue")}</strong>
                 <br />
-                &bull; Financing: <strong>50% LTV Available</strong>
+                &bull; {t("aiChat.financing")} <strong>{t("aiChat.financingValue")}</strong>
               </div>
             </div>
           </div>
@@ -186,7 +187,7 @@ function AIIllustrationPanel() {
                 "dark:bg-white/5 dark:border-transparent dark:text-gray-600"
               )}
             >
-              Ask follow up question...
+              {t("aiChat.placeholder")}
             </div>
           </div>
         </div>
@@ -217,26 +218,26 @@ function AIIllustrationPanel() {
             {/* Node: Finance */}
             <InfoNode
               icon={Landmark}
-              label="Financing"
-              value="50% LTV Approved"
+              label={t("infoNodes.financing.label")}
+              value={t("infoNodes.financing.value")}
               color="blue"
-              className="absolute top-12 left-12"
+              className="absolute top-12 start-12"
             />
 
             {/* Node: Legal */}
             <InfoNode
               icon={Scale}
-              label="Legal"
-              value="Vetted Partner"
+              label={t("infoNodes.legal.label")}
+              value={t("infoNodes.legal.value")}
               color="purple"
-              className="absolute top-12 right-12"
+              className="absolute top-12 end-12"
             />
 
             {/* Node: Due Diligence */}
             <InfoNode
               icon={FileCheck}
-              label="Due Diligence"
-              value="Clean Title"
+              label={t("infoNodes.dueDiligence.label")}
+              value={t("infoNodes.dueDiligence.value")}
               color="green"
               className="absolute bottom-12 left-1/2 -translate-x-1/2"
             />
@@ -247,7 +248,9 @@ function AIIllustrationPanel() {
   );
 }
 
-function DealCard() {
+async function DealCard() {
+  const t = await getTranslations("hero");
+
   return (
     <div
       className={cn(
@@ -265,22 +268,22 @@ function DealCard() {
         <div className="absolute inset-0 animate-pulse bg-gray-200 dark:bg-gray-700" />
         <div
           className={cn(
-            "absolute bottom-2 left-2 backdrop-blur px-2 py-1 rounded text-[10px] shadow-sm",
+            "absolute bottom-2 start-2 backdrop-blur px-2 py-1 rounded text-[10px] shadow-sm",
             "bg-white/80 text-black",
             "dark:bg-black/60 dark:text-white"
           )}
         >
-          Athens, Center
+          {t("dealCard.location")}
         </div>
       </div>
       <div className="flex justify-between items-center mb-2">
-        <span className="text-xs text-muted-foreground">Yield</span>
+        <span className="text-xs text-muted-foreground">{t("dealCard.yield")}</span>
         <span className="text-xs font-mono text-green-600 dark:text-green-400">
           7.2%
         </span>
       </div>
       <div className="flex justify-between items-center">
-        <span className="text-xs text-muted-foreground">Price</span>
+        <span className="text-xs text-muted-foreground">{t("dealCard.price")}</span>
         <span className="text-xs font-mono text-foreground">&euro;145,000</span>
       </div>
     </div>

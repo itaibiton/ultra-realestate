@@ -1,0 +1,312 @@
+{
+  "navbar": {
+    "brand": "GlobalNest",
+    "links": {
+      "howItWorks": "How it Works",
+      "features": "Features",
+      "pricing": "Pricing",
+      "partners": "Partners"
+    },
+    "login": "Log in",
+    "cta": "Start Journey"
+  },
+  "hero": {
+    "badge": "The Real Estate OS for the Global Investor",
+    "titleLine1": "From Zero Knowledge to",
+    "titleHighlight": "Your First Global Property",
+    "description": "The first AI-powered ecosystem that unifies property search, cross-border financing, legal experts, and deal management into one seamless workflow.",
+    "ctaPrimary": "Start Your Investment Journey",
+    "ctaSecondary": "For Professionals",
+    "features": {
+      "aiStrategy": "AI-driven investment strategy",
+      "mortgages": "Local & International mortgages",
+      "legalExperts": "Vetted Legal Experts"
+    },
+    "aiChat": {
+      "title": "GlobalNest AI",
+      "userMessage": "I have 500k NIS liquidity. Looking for high yield, preferably Europe.",
+      "aiTyping": "Processing liquidity parameters... Scanning 12 markets...",
+      "aiResponse": "Based on your profile, I've constructed a deal package in",
+      "location": "Athens, Greece",
+      "yield": "Projected Yield:",
+      "yieldValue": "7.2%",
+      "financing": "Financing:",
+      "financingValue": "50% LTV Available",
+      "placeholder": "Ask follow up question..."
+    },
+    "dealCard": {
+      "location": "Athens, Center",
+      "yield": "Yield",
+      "price": "Price"
+    },
+    "infoNodes": {
+      "financing": {
+        "label": "Financing",
+        "value": "50% LTV Approved"
+      },
+      "legal": {
+        "label": "Legal",
+        "value": "Vetted Partner"
+      },
+      "dueDiligence": {
+        "label": "Due Diligence",
+        "value": "Clean Title"
+      }
+    }
+  },
+  "problem": {
+    "title": "Global Investing is Broken and Fragmented",
+    "description": "Most investors stop before they even start because the process is a disconnected maze of foreign laws, languages, and untrusted vendors.",
+    "items": {
+      "languageBarriers": {
+        "title": "Language Barriers",
+        "description": "Navigating foreign contracts and tax laws without a local guide is dangerous."
+      },
+      "disconnectedProviders": {
+        "title": "Disconnected Providers",
+        "description": "Your lawyer doesn't talk to your mortgage broker, causing delays and lost deals."
+      },
+      "zeroKnowledge": {
+        "title": "Zero Knowledge",
+        "description": "Not knowing where to invest or how to accurately assess risk in a foreign market."
+      },
+      "trustDeficit": {
+        "title": "Trust Deficit",
+        "description": "Fear of scams, unverified developers, and lack of trusted partners abroad."
+      }
+    }
+  },
+  "howItWorks": {
+    "title": "Turning Chaos into a Guided Flow",
+    "description": "GlobalNest replaces fragmentation with a streamlined, three-step journey.",
+    "steps": {
+      "aiStrategy": {
+        "title": "AI Strategy Session",
+        "description": "Chat with our AI advisor to define your budget and goals. We translate your reality into a roadmap."
+      },
+      "perfectMatch": {
+        "title": "The Perfect Match",
+        "description": "We match you with a property, a lender who will finance it, and a legal expert simultaneously."
+      },
+      "dealRoom": {
+        "title": "The Deal Room",
+        "description": "Execute with confidence. Manage docs, sign contracts, and transfer funds in a secure vault."
+      }
+    }
+  },
+  "features": {
+    "title": "A Super-Platform for Real Estate",
+    "description": "Everything you need to buy, finance, and manage property, built into one OS.",
+    "items": {
+      "aiOnboarding": {
+        "title": "AI Onboarding & Insights",
+        "description": "An intelligent assistant that understands your financial DNA and recommends markets that fit your goals."
+      },
+      "globalMarketplace": {
+        "title": "Global Marketplace",
+        "description": "Curated investment opportunities in Israel and top global markets, verified for yield potential."
+      },
+      "financingHub": {
+        "title": "Financing Hub",
+        "description": "Get pre-qualified for mortgages from both Israeli banks and international lenders directly within the platform."
+      },
+      "expertMarketplace": {
+        "title": "Expert Marketplace",
+        "description": "One-click access to vetted lawyers, tax advisors, and inspectors who specialize in cross-border deals."
+      },
+      "dealRoom": {
+        "title": "Secure Deal Room",
+        "description": "A centralized vault for all deal documentation, digital signatures, and compliance checks."
+      },
+      "portfolioTracker": {
+        "title": "Portfolio Tracker",
+        "description": "Post-purchase monitoring of your assets, cash flow, yield performance, and tenant status."
+      }
+    }
+  },
+  "aiShowcase": {
+    "title": "Your Intelligent Investment Co-Pilot",
+    "description": "See how GlobalNest AI removes friction and adds clarity. The AI reads contracts, analyzes markets, and spots risks faster than any human agent.",
+    "cta": "See full AI capabilities",
+    "before": "Before",
+    "after": "GlobalNest AI",
+    "items": {
+      "translation": {
+        "title": "Translation & Clarity",
+        "before": "\"Confusing 20-page foreign legal contract in Greek or Portuguese.\"",
+        "after": "\"This clause requires a 10% deposit by Friday, or the deal is void. High urgency.\""
+      },
+      "marketMatching": {
+        "title": "Market Matching",
+        "before": "\"Spending weeks Googling 'best places to invest in Europe'.\"",
+        "after": "\"Based on your 400k NIS liquidity, Batumi and Cyprus offer the best yields. Here are 3 matches.\""
+      },
+      "riskAssessment": {
+        "title": "Risk Assessment",
+        "before": "\"Buying blind and hoping the developer is solvent.\"",
+        "after": "\"Developer flagged for delayed delivery in 2021. We recommend using an escrow account.\""
+      }
+    }
+  },
+  "personas": {
+    "title": "Designed for Every Stage",
+    "description": "Whether you are buying your first home or scaling a global empire.",
+    "items": {
+      "firstTime": {
+        "title": "The First-Time Investor",
+        "description": "You have savings but zero knowledge. You need safety, education, and hand-holding.",
+        "features": ["Step-by-step AI guidance", "Vetted low-risk opportunities", "Full legal protection"]
+      },
+      "portfolioScaler": {
+        "title": "The Portfolio Scaler",
+        "description": "You own property in Israel and want to diversify abroad. You need efficiency and deal flow.",
+        "features": ["Cross-border tax tools", "International financing", "Unified portfolio dashboard"]
+      },
+      "professional": {
+        "title": "The Professional",
+        "description": "Lawyers, Brokers, and Agents looking for qualified, serious clients.",
+        "features": ["High-intent client leads", "Digital document workflow", "Integrated billing"]
+      }
+    }
+  },
+  "pricing": {
+    "title": "Invest with Confidence",
+    "description": "Choose the plan that fits your investment activity level.",
+    "mostPopular": "Most Popular",
+    "perMonth": "/mo",
+    "plans": {
+      "explorer": {
+        "name": "Explorer",
+        "description": "For the curious",
+        "price": "$0",
+        "features": ["Access to Marketplace", "Basic AI Chatbot", "Educational Resources"],
+        "cta": "Start Free"
+      },
+      "pro": {
+        "name": "GlobalNest Pro",
+        "description": "For the active investor",
+        "price": "$49",
+        "features": ["Unlimited AI Analysis", "Financing Hub Access", "Full Deal Room"],
+        "cta": "Start Trial"
+      },
+      "partner": {
+        "name": "Partner",
+        "description": "For Service Providers",
+        "price": "Custom",
+        "features": ["Verified Client Leads", "Branded Profile", "Deal Management CRM"],
+        "cta": "Apply as Partner"
+      }
+    }
+  },
+  "timeline": {
+    "title": "The Complete Lifecycle",
+    "description": "A unified timeline from your first question to your monthly passive income.",
+    "steps": {
+      "discovery": {
+        "title": "Discovery",
+        "description": "AI analyzes your finances and goals to suggest specific markets and properties tailored to you."
+      },
+      "teamBuilding": {
+        "title": "Team Building",
+        "description": "Automatically connect with a lawyer, tax advisor, and lender specialized in your target region."
+      },
+      "dueDiligence": {
+        "title": "Due Diligence",
+        "description": "Professionals review the asset. AI summarizes risks. You make an informed decision based on data."
+      },
+      "closing": {
+        "title": "Closing",
+        "description": "Digital signing, secure fund transfer, and ownership registration via the Deal Room."
+      },
+      "management": {
+        "title": "Management",
+        "description": "Track rent collection, maintenance requests, and portfolio value in real-time."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Trusted by Investors and Experts",
+    "items": {
+      "amitR": {
+        "quote": "I wanted to buy in Cyprus but was terrified of the legal complexities. GlobalNest connected me with a local lawyer and a lender in 24 hours. The deal was seamless.",
+        "name": "Amit R.",
+        "title": "Tech Investor, Tel Aviv"
+      },
+      "sarahL": {
+        "quote": "This platform cuts my administrative time in half. The clients come prepared, documents are organized, and the AI handles the basic questions. It's a game changer.",
+        "name": "Sarah L.",
+        "title": "Real Estate Attorney"
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": {
+      "safety": {
+        "question": "Is investing abroad safe through GlobalNest?",
+        "answer": "Safety is our priority. We only list properties from verified developers. Our marketplace connects you with vetted legal professionals who perform due diligence on every deal before you sign."
+      },
+      "experience": {
+        "question": "I have no experience. Is this for me?",
+        "answer": "Absolutely. GlobalNest was built for the \"Zero Knowledge\" investor. Our AI explains every step in simple terms, and human experts handle complex details."
+      },
+      "financing": {
+        "question": "Can I get financing for international properties?",
+        "answer": "Yes. Our Financing Hub connects you with Israeli banks offering cross-border mortgages and local lenders in the destination country."
+      },
+      "vetting": {
+        "question": "How do you vet the professionals?",
+        "answer": "Every professional undergoes strict verification, including license checks, interviews, and track record reviews with international clients."
+      }
+    }
+  },
+  "cta": {
+    "title": "Your Global Portfolio Starts Here",
+    "description": "From zero knowledge to your first global property—with one AI-powered platform.",
+    "button": "Create Free Account",
+    "disclaimer": "No credit card required for Explorer plan."
+  },
+  "footer": {
+    "brand": "GlobalNest",
+    "sections": {
+      "platform": {
+        "title": "Platform",
+        "links": {
+          "howItWorks": "How it Works",
+          "features": "AI Features",
+          "pricing": "Pricing"
+        }
+      },
+      "investors": {
+        "title": "For Investors",
+        "links": {
+          "marketplace": "Marketplace",
+          "financingHub": "Financing Hub",
+          "guides": "Investment Guides"
+        }
+      },
+      "professionals": {
+        "title": "For Professionals",
+        "links": {
+          "partnerProgram": "Partner Program",
+          "developerApi": "Developer API",
+          "successStories": "Success Stories"
+        }
+      },
+      "company": {
+        "title": "Company",
+        "links": {
+          "about": "About Us",
+          "contact": "Contact",
+          "privacy": "Privacy Policy"
+        }
+      }
+    },
+    "copyright": "GlobalNest. Empowering Israeli investors worldwide."
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "en": "English",
+    "he": "עברית"
+  }
+}

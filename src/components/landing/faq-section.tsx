@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import {
   Accordion,
   AccordionContent,
@@ -6,30 +7,32 @@ import {
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
-const faqs = [
-  {
-    question: "Is investing abroad safe through GlobalNest?",
-    answer:
-      "Safety is our priority. We only list properties from verified developers. Our marketplace connects you with vetted legal professionals who perform due diligence on every deal before you sign.",
-  },
-  {
-    question: "I have no experience. Is this for me?",
-    answer:
-      'Absolutely. GlobalNest was built for the "Zero Knowledge" investor. Our AI explains every step in simple terms, and human experts handle complex details.',
-  },
-  {
-    question: "Can I get financing for international properties?",
-    answer:
-      "Yes. Our Financing Hub connects you with Israeli banks offering cross-border mortgages and local lenders in the destination country.",
-  },
-  {
-    question: "How do you vet the professionals?",
-    answer:
-      "Every professional undergoes strict verification, including license checks, interviews, and track record reviews with international clients.",
-  },
-];
+export async function FAQSection() {
+  const t = await getTranslations("faq");
 
-export function FAQSection() {
+  const faqs = [
+    {
+      key: "safety",
+      question: t("items.safety.question"),
+      answer: t("items.safety.answer"),
+    },
+    {
+      key: "experience",
+      question: t("items.experience.question"),
+      answer: t("items.experience.answer"),
+    },
+    {
+      key: "financing",
+      question: t("items.financing.question"),
+      answer: t("items.financing.answer"),
+    },
+    {
+      key: "vetting",
+      question: t("items.vetting.question"),
+      answer: t("items.vetting.answer"),
+    },
+  ];
+
   return (
     <section
       className={cn(
@@ -41,14 +44,14 @@ export function FAQSection() {
       <div className="max-w-3xl mx-auto px-6">
         {/* Header */}
         <h2 className="text-3xl font-semibold tracking-tight mb-12 text-center text-foreground">
-          Frequently Asked Questions
+          {t("title")}
         </h2>
 
         {/* FAQ Accordion */}
         <Accordion type="single" collapsible className="space-y-4">
           {faqs.map((faq, index) => (
             <AccordionItem
-              key={index}
+              key={faq.key}
               value={`item-${index}`}
               className={cn(
                 "rounded-lg border px-6 transition-all duration-300",

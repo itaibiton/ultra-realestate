@@ -1,43 +1,34 @@
+import { getTranslations } from "next-intl/server";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const personas = [
-  {
-    title: "The First-Time Investor",
-    description:
-      "You have savings but zero knowledge. You need safety, education, and hand-holding.",
-    features: [
-      "Step-by-step AI guidance",
-      "Vetted low-risk opportunities",
-      "Full legal protection",
-    ],
-    highlighted: false,
-  },
-  {
-    title: "The Portfolio Scaler",
-    description:
-      "You own property in Israel and want to diversify abroad. You need efficiency and deal flow.",
-    features: [
-      "Cross-border tax tools",
-      "International financing",
-      "Unified portfolio dashboard",
-    ],
-    highlighted: true,
-  },
-  {
-    title: "The Professional",
-    description:
-      "Lawyers, Brokers, and Agents looking for qualified, serious clients.",
-    features: [
-      "High-intent client leads",
-      "Digital document workflow",
-      "Integrated billing",
-    ],
-    highlighted: false,
-  },
-];
+export async function PersonasSection() {
+  const t = await getTranslations("personas");
 
-export function PersonasSection() {
+  const personas = [
+    {
+      key: "firstTime",
+      title: t("items.firstTime.title"),
+      description: t("items.firstTime.description"),
+      features: t.raw("items.firstTime.features") as string[],
+      highlighted: false,
+    },
+    {
+      key: "portfolioScaler",
+      title: t("items.portfolioScaler.title"),
+      description: t("items.portfolioScaler.description"),
+      features: t.raw("items.portfolioScaler.features") as string[],
+      highlighted: true,
+    },
+    {
+      key: "professional",
+      title: t("items.professional.title"),
+      description: t("items.professional.description"),
+      features: t.raw("items.professional.features") as string[],
+      highlighted: false,
+    },
+  ];
+
   return (
     <section
       className={cn(
@@ -50,10 +41,10 @@ export function PersonasSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl font-semibold tracking-tight mb-4 text-foreground">
-            Designed for Every Stage
+            {t("title")}
           </h2>
           <p className="text-muted-foreground">
-            Whether you are buying your first home or scaling a global empire.
+            {t("description")}
           </p>
         </div>
 
@@ -61,7 +52,7 @@ export function PersonasSection() {
         <div className="grid md:grid-cols-3 gap-6">
           {personas.map((persona) => (
             <PersonaCard
-              key={persona.title}
+              key={persona.key}
               title={persona.title}
               description={persona.description}
               features={persona.features}

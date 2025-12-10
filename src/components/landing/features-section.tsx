@@ -1,53 +1,74 @@
+import { getTranslations } from "next-intl/server";
 import { Bot, Globe, Landmark, Users, FileCheck, BarChart2 } from "lucide-react";
 import { FeatureCard } from "@/components/shared";
 import { cn } from "@/lib/utils";
 
-const features = [
-  {
-    icon: Bot,
-    title: "AI Onboarding & Insights",
-    description:
-      "An intelligent assistant that understands your financial DNA and recommends markets that fit your goals.",
-    color: "blue" as const,
-  },
-  {
-    icon: Globe,
-    title: "Global Marketplace",
-    description:
-      "Curated investment opportunities in Israel and top global markets, verified for yield potential.",
-    color: "indigo" as const,
-  },
-  {
-    icon: Landmark,
-    title: "Financing Hub",
-    description:
-      "Get pre-qualified for mortgages from both Israeli banks and international lenders directly within the platform.",
-    color: "green" as const,
-  },
-  {
-    icon: Users,
-    title: "Expert Marketplace",
-    description:
-      "One-click access to vetted lawyers, tax advisors, and inspectors who specialize in cross-border deals.",
-    color: "orange" as const,
-  },
-  {
-    icon: FileCheck,
-    title: "Secure Deal Room",
-    description:
-      "A centralized vault for all deal documentation, digital signatures, and compliance checks.",
-    color: "purple" as const,
-  },
-  {
-    icon: BarChart2,
-    title: "Portfolio Tracker",
-    description:
-      "Post-purchase monitoring of your assets, cash flow, yield performance, and tenant status.",
-    color: "pink" as const,
-  },
-];
+const featureIcons = {
+  aiOnboarding: Bot,
+  globalMarketplace: Globe,
+  financingHub: Landmark,
+  expertMarketplace: Users,
+  dealRoom: FileCheck,
+  portfolioTracker: BarChart2,
+};
 
-export function FeaturesSection() {
+const featureColors = {
+  aiOnboarding: "blue" as const,
+  globalMarketplace: "indigo" as const,
+  financingHub: "green" as const,
+  expertMarketplace: "orange" as const,
+  dealRoom: "purple" as const,
+  portfolioTracker: "pink" as const,
+};
+
+export async function FeaturesSection() {
+  const t = await getTranslations("features");
+
+  const features = [
+    {
+      key: "aiOnboarding",
+      icon: featureIcons.aiOnboarding,
+      title: t("items.aiOnboarding.title"),
+      description: t("items.aiOnboarding.description"),
+      color: featureColors.aiOnboarding,
+    },
+    {
+      key: "globalMarketplace",
+      icon: featureIcons.globalMarketplace,
+      title: t("items.globalMarketplace.title"),
+      description: t("items.globalMarketplace.description"),
+      color: featureColors.globalMarketplace,
+    },
+    {
+      key: "financingHub",
+      icon: featureIcons.financingHub,
+      title: t("items.financingHub.title"),
+      description: t("items.financingHub.description"),
+      color: featureColors.financingHub,
+    },
+    {
+      key: "expertMarketplace",
+      icon: featureIcons.expertMarketplace,
+      title: t("items.expertMarketplace.title"),
+      description: t("items.expertMarketplace.description"),
+      color: featureColors.expertMarketplace,
+    },
+    {
+      key: "dealRoom",
+      icon: featureIcons.dealRoom,
+      title: t("items.dealRoom.title"),
+      description: t("items.dealRoom.description"),
+      color: featureColors.dealRoom,
+    },
+    {
+      key: "portfolioTracker",
+      icon: featureIcons.portfolioTracker,
+      title: t("items.portfolioTracker.title"),
+      description: t("items.portfolioTracker.description"),
+      color: featureColors.portfolioTracker,
+    },
+  ];
+
   return (
     <section
       id="features"
@@ -61,11 +82,10 @@ export function FeaturesSection() {
         {/* Header */}
         <div className="mb-16">
           <h2 className="text-3xl font-semibold tracking-tight mb-4 text-foreground">
-            A Super-Platform for Real Estate
+            {t("title")}
           </h2>
           <p className="max-w-2xl text-muted-foreground">
-            Everything you need to buy, finance, and manage property, built into
-            one OS.
+            {t("description")}
           </p>
         </div>
 
@@ -73,7 +93,7 @@ export function FeaturesSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature) => (
             <FeatureCard
-              key={feature.title}
+              key={feature.key}
               icon={feature.icon}
               title={feature.title}
               description={feature.description}

@@ -1,19 +1,22 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Globe } from "lucide-react";
-import { ThemeToggle } from "@/components/shared";
+import { ThemeToggle, LanguageSwitcher } from "@/components/shared";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
-  { href: "#how-it-works", label: "How it Works" },
-  { href: "#features", label: "Features" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#partners", label: "Partners" },
-];
-
 export function Navbar() {
+  const t = useTranslations("navbar");
+
+  const navLinks = [
+    { href: "#how-it-works", label: t("links.howItWorks") },
+    { href: "#features", label: t("links.features") },
+    { href: "#pricing", label: t("links.pricing") },
+    { href: "#partners", label: t("links.partners") },
+  ];
+
   return (
     <nav
       className={cn(
@@ -37,33 +40,34 @@ export function Navbar() {
             <Globe className="w-[18px] h-[18px]" />
           </div>
           <span className="font-semibold text-sm tracking-tight text-foreground">
-            GlobalNest
+            {t("brand")}
           </span>
         </Link>
 
         {/* Navigation Links */}
         <div className="hidden md:flex items-center gap-8 text-xs font-medium text-muted-foreground">
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.href}
               href={link.href}
               className="transition-colors hover:text-foreground"
             >
               {link.label}
-            </Link>
+            </a>
           ))}
         </div>
 
         {/* Right Side Actions */}
         <div className="flex items-center gap-4">
+          <LanguageSwitcher />
           <ThemeToggle />
 
-          <Link
+          <a
             href="#"
             className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors hidden sm:block"
           >
-            Log in
-          </Link>
+            {t("login")}
+          </a>
 
           <Button
             asChild
@@ -75,7 +79,7 @@ export function Navbar() {
               "shadow-lg shadow-gray-200/50 dark:shadow-none"
             )}
           >
-            <Link href="#">Start Journey</Link>
+            <a href="#">{t("cta")}</a>
           </Button>
         </div>
       </div>

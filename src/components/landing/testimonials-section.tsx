@@ -1,24 +1,27 @@
+import { getTranslations } from "next-intl/server";
 import { TestimonialCard } from "@/components/shared";
 import { cn } from "@/lib/utils";
 
-const testimonials = [
-  {
-    quote:
-      "I wanted to buy in Cyprus but was terrified of the legal complexities. GlobalNest connected me with a local lawyer and a lender in 24 hours. The deal was seamless.",
-    name: "Amit R.",
-    title: "Tech Investor, Tel Aviv",
-    avatarGradient: "gray" as const,
-  },
-  {
-    quote:
-      "This platform cuts my administrative time in half. The clients come prepared, documents are organized, and the AI handles the basic questions. It's a game changer.",
-    name: "Sarah L.",
-    title: "Real Estate Attorney",
-    avatarGradient: "blue" as const,
-  },
-];
+export async function TestimonialsSection() {
+  const t = await getTranslations("testimonials");
 
-export function TestimonialsSection() {
+  const testimonials = [
+    {
+      key: "amitR",
+      quote: t("items.amitR.quote"),
+      name: t("items.amitR.name"),
+      title: t("items.amitR.title"),
+      avatarGradient: "gray" as const,
+    },
+    {
+      key: "sarahL",
+      quote: t("items.sarahL.quote"),
+      name: t("items.sarahL.name"),
+      title: t("items.sarahL.title"),
+      avatarGradient: "blue" as const,
+    },
+  ];
+
   return (
     <section
       className={cn(
@@ -30,14 +33,14 @@ export function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <h2 className="text-3xl font-semibold tracking-tight mb-16 text-center text-foreground">
-          Trusted by Investors and Experts
+          {t("title")}
         </h2>
 
         {/* Testimonials Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {testimonials.map((testimonial) => (
             <TestimonialCard
-              key={testimonial.name}
+              key={testimonial.key}
               quote={testimonial.quote}
               name={testimonial.name}
               title={testimonial.title}

@@ -1,3 +1,4 @@
+import { setRequestLocale } from "next-intl/server";
 import { Navbar, Footer } from "@/components/layout";
 import {
   HeroSection,
@@ -13,7 +14,14 @@ import {
   CTASection,
 } from "@/components/landing";
 
-export default function LandingPage() {
+export default async function LandingPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <Navbar />
