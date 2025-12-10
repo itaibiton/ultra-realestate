@@ -308,5 +308,62 @@
     "label": "שפה",
     "en": "English",
     "he": "עברית"
+  },
+  "auth": {
+    "signInTitle": "ברוך שובך",
+    "signInDescription": "הזן את פרטי ההתחברות שלך לגישה לחשבון",
+    "signUpTitle": "צור חשבון",
+    "signUpDescription": "התחל את מסע ההשקעה הגלובלי שלך היום",
+    "email": "אימייל",
+    "emailPlaceholder": "you@example.com",
+    "password": "סיסמה",
+    "passwordPlaceholder": "הזן את הסיסמה שלך",
+    "confirmPassword": "אימות סיסמה",
+    "confirmPasswordPlaceholder": "אמת את הסיסמה שלך",
+    "signIn": "התחבר",
+    "signUp": "הרשמה",
+    "signingIn": "מתחבר...",
+    "signingUp": "יוצר חשבון...",
+    "forgotPassword": "שכחת סיסמה?",
+    "noAccount": "אין לך חשבון?",
+    "haveAccount": "יש לך כבר חשבון?",
+    "checkEmail": "בדוק את האימייל שלך",
+    "checkEmailDescription": "שלחנו לך קישור אימות. אנא בדוק את תיבת הדואר הנכנס שלך ולחץ על הקישור כדי לאמת את החשבון שלך.",
+    "backToSignIn": "חזרה להתחברות",
+    "verificationFailed": "אימות האימייל נכשל. אנא נסה שוב.",
+    "termsAgreement": "בהמשך, אתה מסכים ל",
+    "termsOfService": "תנאי השירות",
+    "and": "ו",
+    "privacyPolicy": "מדיניות הפרטיות"
+  },
+  "dashboard": {
+    "title": "לוח בקרה",
+    "welcome": "ברוך הבא ל-GlobalNest",
+    "signOut": "התנתק",
+    "nav": {
+      "home": "בית",
+      "settings": "הגדרות"
+    },
+    "cards": {
+      "properties": {
+        "title": "נכסים",
+        "description": "הנכסים שאתה עוקב אחריהם",
+        "subtitle": "נכסים ברשימת המעקב"
+      },
+      "investments": {
+        "title": "השקעות",
+        "description": "שווי תיק כולל",
+        "subtitle": "בכל השווקים"
+      },
+      "alerts": {
+        "title": "התראות",
+        "description": "התראות שוק",
+        "subtitle": "הזדמנויות חדשות"
+      }
+    },
+    "comingSoon": {
+      "title": "עוד תכונות בקרוב",
+      "description": "אנחנו בונים כלים עוצמתיים שיעזרו לך לגלות, לנתח ולהשקיע בנדל\"ן גלובלי. הישאר מעודכן!"
+    }
   }
 }

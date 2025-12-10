@@ -308,5 +308,62 @@
     "label": "Language",
     "en": "English",
     "he": "עברית"
+  },
+  "auth": {
+    "signInTitle": "Welcome back",
+    "signInDescription": "Enter your credentials to access your account",
+    "signUpTitle": "Create an account",
+    "signUpDescription": "Start your global investment journey today",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Confirm your password",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signingIn": "Signing in...",
+    "signingUp": "Creating account...",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "checkEmail": "Check your email",
+    "checkEmailDescription": "We've sent you a verification link. Please check your inbox and click the link to verify your account.",
+    "backToSignIn": "Back to Sign In",
+    "verificationFailed": "Email verification failed. Please try again.",
+    "termsAgreement": "By continuing, you agree to our",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome to GlobalNest",
+    "signOut": "Sign Out",
+    "nav": {
+      "home": "Home",
+      "settings": "Settings"
+    },
+    "cards": {
+      "properties": {
+        "title": "Properties",
+        "description": "Your tracked properties",
+        "subtitle": "Properties in watchlist"
+      },
+      "investments": {
+        "title": "Investments",
+        "description": "Total portfolio value",
+        "subtitle": "Across all markets"
+      },
+      "alerts": {
+        "title": "Alerts",
+        "description": "Market notifications",
+        "subtitle": "New opportunities"
+      }
+    },
+    "comingSoon": {
+      "title": "More Features Coming Soon",
+      "description": "We're building powerful tools to help you discover, analyze, and invest in global real estate. Stay tuned!"
+    }
   }
 }
