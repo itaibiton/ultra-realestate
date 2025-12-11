@@ -37,57 +37,33 @@ interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
 export function AppSidebar({ user, ...props }: AppSidebarProps) {
   const t = useTranslations("sidebar");
 
-  // Main navigation with collapsible sub-items
-  const navMain = [
+  // Navigation sections with flat structure
+  const navSections = [
     {
-      title: t("nav.dashboard"),
-      url: "/dashboard",
-      icon: LayoutDashboard,
-      isActive: true,
-    },
-    {
-      title: t("sections.properties"),
-      url: "/properties",
-      icon: Building2,
+      label: t("sections.main"),
       items: [
-        {
-          title: t("nav.marketplace"),
-          url: "/properties",
-        },
-        {
-          title: t("nav.watchlist"),
-          url: "/properties/watchlist",
-        },
+        { title: t("nav.dashboard"), url: "/dashboard", icon: LayoutDashboard },
       ],
     },
     {
-      title: t("sections.journey"),
-      url: "/journey",
-      icon: Route,
+      label: t("sections.properties"),
       items: [
-        {
-          title: t("nav.status"),
-          url: "/journey",
-        },
-        {
-          title: t("nav.professionals"),
-          url: "/journey/professionals",
-        },
+        { title: t("nav.marketplace"), url: "/properties", icon: Building2 },
+        { title: t("nav.watchlist"), url: "/properties/watchlist", icon: Bookmark },
       ],
     },
     {
-      title: t("sections.profile"),
-      url: "/profile",
-      icon: User,
+      label: t("sections.journey"),
       items: [
-        {
-          title: t("nav.settings"),
-          url: "/profile",
-        },
-        {
-          title: t("nav.account"),
-          url: "/profile/account",
-        },
+        { title: t("nav.status"), url: "/journey", icon: Route },
+        { title: t("nav.professionals"), url: "/journey/professionals", icon: Users },
+      ],
+    },
+    {
+      label: t("sections.profile"),
+      items: [
+        { title: t("nav.settings"), url: "/profile", icon: Settings },
+        { title: t("nav.account"), url: "/profile/account", icon: User },
       ],
     },
   ];
@@ -135,7 +111,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={navMain} />
+        <NavMain sections={navSections} />
         <NavSecondary items={navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>

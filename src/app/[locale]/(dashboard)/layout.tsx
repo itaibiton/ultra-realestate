@@ -1,7 +1,7 @@
 import { redirect } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getLocale } from "next-intl/server";
-import { Locale } from "@/i18n/routing";
+import { Locale, isRTL } from "@/i18n/routing";
 
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
@@ -31,9 +31,11 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
     return redirect({ href: "/sign-in", locale });
   }
 
+  const sidebarSide = isRTL(locale) ? "right" : "left";
+
   return (
     <SidebarProvider>
-      <AppSidebar user={user} />
+      <AppSidebar user={user} side={sidebarSide} />
       <SidebarInset>
         <SiteHeader />
         <main className="flex-1 p-6">
