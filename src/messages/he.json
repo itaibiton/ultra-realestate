@@ -344,6 +344,31 @@
     "tryAgain": "נסה שוב",
     "goHome": "לדף הבית"
   },
+  "sidebar": {
+    "collapse": "כווץ סרגל צד",
+    "expand": "הרחב סרגל צד",
+    "sections": {
+      "main": "ראשי",
+      "properties": "נכסים",
+      "journey": "מסע",
+      "profile": "פרופיל"
+    },
+    "nav": {
+      "dashboard": "לוח בקרה",
+      "marketplace": "שוק",
+      "watchlist": "רשימת מעקב",
+      "status": "סטטוס",
+      "professionals": "אנשי מקצוע",
+      "settings": "הגדרות",
+      "account": "חשבון",
+      "signOut": "התנתק"
+    }
+  },
+  "header": {
+    "menu": "תפריט",
+    "search": "חיפוש...",
+    "notifications": "התראות"
+  },
   "dashboard": {
     "title": "לוח בקרה",
     "welcome": "ברוך הבא ל-GlobalNest",

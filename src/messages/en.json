@@ -344,6 +344,31 @@
     "tryAgain": "Try Again",
     "goHome": "Go Home"
   },
+  "sidebar": {
+    "collapse": "Collapse sidebar",
+    "expand": "Expand sidebar",
+    "sections": {
+      "main": "Main",
+      "properties": "Properties",
+      "journey": "Journey",
+      "profile": "Profile"
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "marketplace": "Marketplace",
+      "watchlist": "Watchlist",
+      "status": "Status",
+      "professionals": "Professionals",
+      "settings": "Settings",
+      "account": "Account",
+      "signOut": "Sign Out"
+    }
+  },
+  "header": {
+    "menu": "Menu",
+    "search": "Search...",
+    "notifications": "Notifications"
+  },
   "dashboard": {
     "title": "Dashboard",
     "welcome": "Welcome to GlobalNest",
