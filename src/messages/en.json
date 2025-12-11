@@ -345,9 +345,12 @@
     "goHome": "Go Home"
   },
   "sidebar": {
+    "subtitle": "Real Estate OS",
     "collapse": "Collapse sidebar",
     "expand": "Expand sidebar",
+    "signOut": "Sign Out",
     "sections": {
+      "platform": "Platform",
       "main": "Main",
       "properties": "Properties",
       "journey": "Journey",
@@ -361,6 +364,9 @@
       "professionals": "Professionals",
       "settings": "Settings",
       "account": "Account",
+      "support": "Support",
+      "feedback": "Feedback",
+      "notifications": "Notifications",
       "signOut": "Sign Out"
     }
   },

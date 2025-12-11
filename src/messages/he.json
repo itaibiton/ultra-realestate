@@ -345,9 +345,12 @@
     "goHome": "לדף הבית"
   },
   "sidebar": {
+    "subtitle": "מערכת נדל\"ן",
     "collapse": "כווץ סרגל צד",
     "expand": "הרחב סרגל צד",
+    "signOut": "התנתק",
     "sections": {
+      "platform": "פלטפורמה",
       "main": "ראשי",
       "properties": "נכסים",
       "journey": "מסע",
@@ -361,6 +364,9 @@
       "professionals": "אנשי מקצוע",
       "settings": "הגדרות",
       "account": "חשבון",
+      "support": "תמיכה",
+      "feedback": "משוב",
+      "notifications": "התראות",
       "signOut": "התנתק"
     }
   },
