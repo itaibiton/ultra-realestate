@@ -53,7 +53,7 @@ export async function signUp(formData: FormData): Promise<AuthResult> {
 
   const supabase = await createClient();
 
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
@@ -63,6 +63,12 @@ export async function signUp(formData: FormData): Promise<AuthResult> {
 
   if (error) {
     return { error: error.message };
+  }
+
+  // Detect duplicate email: Supabase returns user but no session when email already exists
+  // This is a security feature to prevent email enumeration
+  if (data.user && !data.session) {
+    return { error: "This email is already registered. Please sign in instead." };
   }
 
   return { success: true };

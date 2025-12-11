@@ -1,0 +1,224 @@
+{
+  "database_name": "MVP Task Board",
+  "description": "GlobalNest Real Estate Platform - MVP Development Tracker",
+  "properties": {
+    "Name": {
+      "type": "title",
+      "title": {}
+    },
+    "Status": {
+      "type": "select",
+      "select": {
+        "options": [
+          {
+            "name": "Backlog",
+            "color": "gray"
+          },
+          {
+            "name": "To Do",
+            "color": "yellow"
+          },
+          {
+            "name": "In Progress",
+            "color": "blue"
+          },
+          {
+            "name": "Completed",
+            "color": "green"
+          }
+        ]
+      }
+    },
+    "Priority": {
+      "type": "select",
+      "select": {
+        "options": [
+          {
+            "name": "P0-Critical",
+            "color": "red"
+          },
+          {
+            "name": "P1-High",
+            "color": "orange"
+          },
+          {
+            "name": "P2-Medium",
+            "color": "yellow"
+          },
+          {
+            "name": "P3-Low",
+            "color": "gray"
+          }
+        ]
+      }
+    },
+    "Category": {
+      "type": "select",
+      "select": {
+        "options": [
+          {
+            "name": "Auth",
+            "color": "purple"
+          },
+          {
+            "name": "UI",
+            "color": "blue"
+          },
+          {
+            "name": "Backend",
+            "color": "green"
+          },
+          {
+            "name": "Database",
+            "color": "pink"
+          },
+          {
+            "name": "Integration",
+            "color": "orange"
+          },
+          {
+            "name": "DevOps",
+            "color": "gray"
+          }
+        ]
+      }
+    },
+    "Description": {
+      "type": "rich_text",
+      "rich_text": {}
+    },
+    "Assignee": {
+      "type": "people",
+      "people": {}
+    },
+    "Due Date": {
+      "type": "date",
+      "date": {}
+    },
+    "Effort": {
+      "type": "number",
+      "number": {
+        "format": "number"
+      }
+    },
+    "Progress": {
+      "type": "formula",
+      "formula": {
+        "expression": "if(prop(\"Status\") == \"Completed\", 100, if(prop(\"Status\") == \"In Progress\", 50, if(prop(\"Status\") == \"To Do\", 0, 0)))"
+      }
+    },
+    "Priority Score": {
+      "type": "formula",
+      "formula": {
+        "expression": "if(prop(\"Priority\") == \"P0-Critical\", 4, if(prop(\"Priority\") == \"P1-High\", 3, if(prop(\"Priority\") == \"P2-Medium\", 2, 1)))"
+      }
+    },
+    "Status Icon": {
+      "type": "formula",
+      "formula": {
+        "expression": "if(prop(\"Status\") == \"Completed\", \"✅\", if(prop(\"Status\") == \"In Progress\", \"🔄\", if(prop(\"Status\") == \"To Do\", \"📋\", \"💤\")))"
+      }
+    }
+  },
+  "views": [
+    {
+      "name": "MVP Kanban Board",
+      "type": "board",
+      "group_by": "Status",
+      "sort": [
+        {
+          "property": "Priority Score",
+          "direction": "descending"
+        },
+        {
+          "property": "Created time",
+          "direction": "ascending"
+        }
+      ],
+      "filter": null
+    },
+    {
+      "name": "Priority Matrix",
+      "type": "board",
+      "group_by": "Priority",
+      "sort": [
+        {
+          "property": "Status",
+          "direction": "ascending"
+        }
+      ],
+      "filter": {
+        "property": "Status",
+        "select": {
+          "does_not_equal": "Completed"
+        }
+      }
+    },
+    {
+      "name": "Category Timeline",
+      "type": "board",
+      "group_by": "Category",
+      "sort": [
+        {
+          "property": "Priority Score",
+          "direction": "descending"
+        }
+      ]
+    },
+    {
+      "name": "Sprint Planning",
+      "type": "table",
+      "sort": [
+        {
+          "property": "Priority Score",
+          "direction": "descending"
+        },
+        {
+          "property": "Status",
+          "direction": "ascending"
+        }
+      ],
+      "filter": {
+        "or": [
+          {
+            "property": "Status",
+            "select": {
+              "equals": "To Do"
+            }
+          },
+          {
+            "property": "Status",
+            "select": {
+              "equals": "In Progress"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Completed Archive",
+      "type": "table",
+      "sort": [
+        {
+          "property": "Last edited time",
+          "direction": "descending"
+        }
+      ],
+      "filter": {
+        "property": "Status",
+        "select": {
+          "equals": "Completed"
+        }
+      }
+    }
+  ],
+  "default_view": "MVP Kanban Board",
+  "metadata": {
+    "total_tasks": 34,
+    "completed_tasks": 13,
+    "completion_percentage": 38,
+    "last_updated": "2025-12-10",
+    "project": "GlobalNest Real Estate Platform",
+    "version": "MVP v1.0"
+  }
+}

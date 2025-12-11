@@ -99,6 +99,7 @@
   --glass-bg: oklch(1 0 0 / 60%);
   --glass-border: oklch(0 0 0 / 8%);
   --grid-color: oklch(0 0 0 / 5%);
+
 }
 
 /* --- Dark Mode Variables --- */
@@ -192,5 +193,34 @@
   /* Pulse Slow Animation */
   .animate-pulse-slow {
     animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Auth Background Blur Orb */
+  .auth-blur-orb {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    border-radius: 9999px;
+    filter: blur(100px);
+    z-index: -10;
+  }
+
+  .auth-blur-orb-blue {
+    background: oklch(0.59 0.2 255 / 10%);
+  }
+
+  .dark .auth-blur-orb-blue {
+    background: oklch(0.59 0.2 255 / 20%);
+  }
+
+  .auth-blur-orb-green {
+    background: oklch(0.65 0.2 145 / 10%);
+  }
+
+  .dark .auth-blur-orb-green {
+    background: oklch(0.65 0.2 145 / 20%);
   }
 }

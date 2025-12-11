@@ -334,7 +334,15 @@
     "termsAgreement": "By continuing, you agree to our",
     "termsOfService": "Terms of Service",
     "and": "and",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
+  },
+  "errors": {
+    "authErrorTitle": "Something went wrong",
+    "authErrorDescription": "An error occurred during authentication. Please try again or return to the home page.",
+    "tryAgain": "Try Again",
+    "goHome": "Go Home"
   },
   "dashboard": {
     "title": "Dashboard",

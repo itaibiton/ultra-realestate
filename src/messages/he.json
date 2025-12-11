@@ -334,7 +334,15 @@
     "termsAgreement": "בהמשך, אתה מסכים ל",
     "termsOfService": "תנאי השירות",
     "and": "ו",
-    "privacyPolicy": "מדיניות הפרטיות"
+    "privacyPolicy": "מדיניות הפרטיות",
+    "showPassword": "הצג סיסמה",
+    "hidePassword": "הסתר סיסמה"
+  },
+  "errors": {
+    "authErrorTitle": "משהו השתבש",
+    "authErrorDescription": "אירעה שגיאה במהלך האימות. אנא נסה שוב או חזור לדף הבית.",
+    "tryAgain": "נסה שוב",
+    "goHome": "לדף הבית"
   },
   "dashboard": {
     "title": "לוח בקרה",

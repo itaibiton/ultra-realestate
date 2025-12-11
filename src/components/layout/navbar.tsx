@@ -62,12 +62,13 @@ export function Navbar() {
           <LanguageSwitcher />
           <ThemeToggle />
 
-          <a
-            href="#"
+          <Link
+            href="/sign-in"
+
             className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors hidden sm:block"
           >
             {t("login")}
-          </a>
+          </Link>
 
           <Button
             asChild
