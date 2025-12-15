@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { routing, isRTL, type Locale } from "@/i18n/routing";
 import { inter, heebo } from "@/lib/fonts";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { Toaster } from "sonner";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -79,6 +80,7 @@ export default async function LocaleLayout({
             disableTransitionOnChange
           >
             {children}
+            <Toaster position="top-center" richColors />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

@@ -404,5 +404,192 @@
       "title": "More Features Coming Soon",
       "description": "We're building powerful tools to help you discover, analyze, and invest in global real estate. Stay tuned!"
     }
+  },
+  "onboarding": {
+    "progress": "Step {current} of {total}",
+    "welcome": {
+      "title": "Let's Build Your Investment Profile",
+      "description": "Answer a few questions so we can personalize your experience and find properties that match your goals.",
+      "startButton": "Start Onboarding",
+      "skipButton": "Skip for now",
+      "timeEstimate": "Takes about 3 minutes",
+      "benefits": {
+        "personalized": {
+          "title": "Personalized Recommendations",
+          "description": "Get property matches tailored to your budget and goals"
+        },
+        "markets": {
+          "title": "Smart Market Matching",
+          "description": "Discover the best markets for your investment style"
+        },
+        "recommendations": {
+          "title": "Expert Connections",
+          "description": "Connect with professionals who specialize in your target markets"
+        }
+      }
+    },
+    "chat": {
+      "title": "Investment Profile",
+      "typingIndicator": "GlobalNest AI is typing...",
+      "inputPlaceholder": "Type your answer...",
+      "sendButton": "Send",
+      "backButton": "Back",
+      "nextButton": "Next",
+      "skipQuestion": "Skip this question"
+    },
+    "summary": {
+      "title": "Your Investment Profile",
+      "description": "Here's a summary of your preferences. You can edit any section before confirming.",
+      "editButton": "Edit",
+      "confirmButton": "Confirm & Continue",
+      "notSpecified": "Not specified",
+      "processing": "Processing...",
+      "sections": {
+        "goals": "Investment Goal",
+        "budget": "Investment Budget",
+        "markets": "Preferred Locations",
+        "property": "Property Types",
+        "timeline": "Purchase Timeline",
+        "experience": "Experience Level",
+        "finances": "Monthly Finances"
+      }
+    },
+    "complete": {
+      "title": "Profile Complete!",
+      "description": "Your investment profile has been saved. We're ready to help you find your perfect property.",
+      "viewPropertiesButton": "View Recommended Properties",
+      "dashboardButton": "Go to Dashboard",
+      "viewProperties": "Browse Properties",
+      "goToDashboard": "Go to Dashboard",
+      "aiNote": {
+        "title": "AI-Powered Recommendations",
+        "description": "Our AI will now personalize your property search based on your investment goals, budget, and preferences."
+      },
+      "whatsNext": "What's Next?",
+      "features": {
+        "properties": {
+          "title": "Explore Properties",
+          "description": "Browse curated listings that match your investment criteria and preferences."
+        },
+        "recommendations": {
+          "title": "Get Smart Recommendations",
+          "description": "Receive AI-powered property suggestions based on your unique profile."
+        },
+        "experts": {
+          "title": "Connect with Experts",
+          "description": "Work with verified real estate professionals in your target markets."
+        }
+      },
+      "stats": {
+        "markets": "Markets matched",
+        "properties": "Properties available",
+        "professionals": "Professionals ready"
+      }
+    },
+    "questions": {
+      "budget": {
+        "title": "What's your investment budget?",
+        "description": "Enter the amount you have available for real estate investment"
+      },
+      "purpose": {
+        "title": "What's your main goal?",
+        "description": "Select the primary purpose for your property purchase",
+        "options": {
+          "investment": "Investment",
+          "living": "Living",
+          "both": "Both"
+        }
+      },
+      "location": {
+        "title": "Which locations interest you?",
+        "description": "Select up to 3 locations you'd like to explore",
+        "options": {
+          "israel": "Israel",
+          "usa": "United States",
+          "europe": "Europe",
+          "uae": "United Arab Emirates",
+          "other": "Other"
+        }
+      },
+      "property": {
+        "title": "What type of property are you looking for?",
+        "description": "Select all property types that interest you",
+        "options": {
+          "apartment": "Apartment",
+          "house": "House",
+          "commercial": "Commercial",
+          "land": "Land"
+        }
+      },
+      "timeline": {
+        "title": "When do you plan to buy?",
+        "description": "This helps us prioritize opportunities for you",
+        "options": {
+          "asap": "As soon as possible",
+          "3_6_months": "3-6 months",
+          "6_12_months": "6-12 months",
+          "1_year_plus": "1+ year"
+        }
+      },
+      "experience": {
+        "title": "What's your real estate experience?",
+        "description": "This helps us tailor our guidance level",
+        "options": {
+          "first_time": "First-time buyer",
+          "first_time_desc": "This will be my first property purchase",
+          "some_experience": "Some experience",
+          "some_experience_desc": "I've bought 1-2 properties before",
+          "experienced": "Experienced investor",
+          "experienced_desc": "I have a portfolio of 3+ properties"
+        }
+      },
+      "finances": {
+        "title": "What's your monthly income and expenses?",
+        "description": "This helps us calculate your purchasing power",
+        "incomeLabel": "Monthly Income",
+        "expensesLabel": "Monthly Expenses",
+        "incomePlaceholder": "Enter your monthly income",
+        "expensesPlaceholder": "Enter your monthly expenses",
+        "disposableLabel": "Disposable Income"
+      }
+    },
+    "ai": {
+      "greeting": "Hi! I'm your GlobalNest AI assistant. I'll help you build your investment profile. Let's start with a few questions.",
+      "budget": "First, how much money do you have available for this investment?",
+      "purpose": "Great! What's your main goal - are you looking for an investment property, a place to live, or both?",
+      "location": "Which locations are you interested in? You can select up to 3.",
+      "property": "What type of property are you looking for? Select all that interest you.",
+      "timeline": "When are you planning to make your purchase?",
+      "experience": "Tell me about your real estate experience. This helps me tailor my guidance.",
+      "finances": "Last question! What's your monthly income and expenses? This helps us understand your financial situation.",
+      "complete": "Perfect! I've created your investment profile. Let me show you a summary and recommend some professionals who can help."
+    },
+    "professionals": {
+      "title": "Recommended Professionals",
+      "description": "Based on your profile, we recommend connecting with these experts",
+      "types": {
+        "mortgage_advisor": {
+          "title": "Mortgage Advisor",
+          "description": "Get expert help with financing your property purchase"
+        },
+        "real_estate_agent": {
+          "title": "Real Estate Agent",
+          "description": "Find the perfect property with professional guidance"
+        },
+        "lawyer": {
+          "title": "Real Estate Lawyer",
+          "description": "Ensure your transaction is legally sound"
+        }
+      },
+      "reasons": {
+        "financing_needed": "You may need financing options for your budget",
+        "always_recommended": "Essential for finding the right property",
+        "international_purchase": "Important for international property purchases",
+        "commercial_property": "Recommended for commercial property transactions",
+        "first_time_buyer": "Highly recommended for first-time buyers"
+      },
+      "connectButton": "Connect with Professional",
+      "skipButton": "Skip for now"
+    }
   }
 }
