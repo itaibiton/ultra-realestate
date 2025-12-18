@@ -1,18 +1,16 @@
 import { setRequestLocale } from "next-intl/server";
-import { Navbar, Footer } from "@/components/layout";
+import { Navbar } from "@/components/layout";
 import {
-  HeroSection,
-  ProblemSection,
-  HowItWorksSection,
-  FeaturesSection,
-  AIShowcaseSection,
-  PersonasSection,
-  PricingSection,
-  TimelineSection,
-  TestimonialsSection,
-  FAQSection,
-  CTASection,
-} from "@/components/landing";
+  Hero,
+  Problem,
+  Solution,
+  Features,
+  AIShowcase,
+  Testimonials,
+  Pricing,
+  CTA,
+  Footer,
+} from "@/components/landing/globalnest";
 
 export default async function LandingPage({
   params,
@@ -25,18 +23,15 @@ export default async function LandingPage({
   return (
     <>
       <Navbar />
-      <main>
-        <HeroSection />
-        <ProblemSection />
-        <HowItWorksSection />
-        <FeaturesSection />
-        <AIShowcaseSection />
-        <PersonasSection />
-        <PricingSection />
-        <TimelineSection />
-        <TestimonialsSection />
-        <FAQSection />
-        <CTASection />
+      <main className="bg-gn-black min-h-screen">
+        <Hero />
+        <Problem />
+        <Solution />
+        <Features />
+        <AIShowcase />
+        <Testimonials />
+        <Pricing />
+        <CTA />
       </main>
       <Footer />
     </>

@@ -255,21 +255,21 @@ export default function CompletePage() {
       )}
 
       {/* Action buttons */}
-      <div className="space-y-3 pt-4">
+      <div className="flex flex-wrap gap-3 pt-4">
         <Button
           size="lg"
-          className="w-full gap-2"
+          className="gap-2"
           onClick={handleViewProperties}
         >
           <Home className="w-4 h-4" />
           {t("complete.viewProperties")}
-          <ArrowRight className="w-4 h-4 ms-auto" />
+          <ArrowRight className="w-4 h-4" />
         </Button>
 
         <Button
           variant="outline"
           size="lg"
-          className="w-full gap-2"
+          className="gap-2"
           onClick={handleGoToDashboard}
         >
           <LayoutDashboard className="w-4 h-4" />

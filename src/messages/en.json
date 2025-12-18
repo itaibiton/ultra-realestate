@@ -403,6 +403,14 @@
     "comingSoon": {
       "title": "More Features Coming Soon",
       "description": "We're building powerful tools to help you discover, analyze, and invest in global real estate. Stay tuned!"
+    },
+    "recommended": {
+      "title": "Recommended for You",
+      "viewAll": "View All"
+    },
+    "savedProperties": {
+      "title": "Your Saved Properties",
+      "viewAll": "View All"
     }
   },
   "onboarding": {
@@ -590,6 +598,578 @@
       },
       "connectButton": "Connect with Professional",
       "skipButton": "Skip for now"
+    }
+  },
+  "landing": {
+    "hero": {
+      "badge": "Trusted by New York Investors",
+      "title": "Invest in Israeli Real Estate from New York",
+      "subtitle": "The trusted platform connecting American investors with premium Israeli properties. Licensed, secure, and backed by $100M+ in ready capital.",
+      "ctaPrimary": "Start Your Investment Journey",
+      "ctaSecondary": "Browse Properties"
+    },
+    "trustBadges": {
+      "licensed": "Licensed & Regulated",
+      "secure": "Secure Transactions",
+      "support": "Expert Support",
+      "capital": "$100M+ Invested"
+    },
+    "howItWorks": {
+      "title": "Your Path to Israeli Real Estate",
+      "subtitle": "Three simple steps from interest to ownership",
+      "steps": {
+        "profile": {
+          "title": "Tell Us Your Goals",
+          "description": "Complete your investor profile so we understand your budget, timeline, and property preferences."
+        },
+        "browse": {
+          "title": "Browse Properties",
+          "description": "Access AI-matched Israeli properties that fit your investment criteria and financial profile."
+        },
+        "connect": {
+          "title": "Connect & Invest",
+          "description": "Work with vetted local experts, secure financing, and complete your purchase with confidence."
+        }
+      }
+    },
+    "featuredProperties": {
+      "title": "Featured Israeli Properties",
+      "subtitle": "Carefully selected opportunities in Israel's most promising markets",
+      "viewAll": "View All Properties"
+    },
+    "stats": {
+      "title": "Why GlobalNest?",
+      "items": {
+        "capital": {
+          "value": "$100M+",
+          "label": "Ready to Invest"
+        },
+        "properties": {
+          "value": "50+",
+          "label": "Premium Properties"
+        },
+        "support": {
+          "value": "24/7",
+          "label": "Expert Support"
+        },
+        "experience": {
+          "value": "5+",
+          "label": "Years Experience"
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Start Your Investment Journey?",
+      "subtitle": "Join hundreds of New York investors who trust GlobalNest for their Israeli real estate investments.",
+      "button": "Get Started Today"
+    }
+  },
+  "marketplace": {
+    "title": "Property Marketplace",
+    "subtitle": "Discover investment opportunities worldwide",
+    "searchPlaceholder": "Search by city, neighborhood, or property type...",
+    "filters": {
+      "title": "Filters",
+      "country": "Country",
+      "city": "City",
+      "priceRange": "Price Range",
+      "propertyType": "Property Type",
+      "bedrooms": "Bedrooms",
+      "bathrooms": "Bathrooms",
+      "area": "Area",
+      "features": "Features",
+      "amenities": "Amenities",
+      "listingType": "Listing Type",
+      "clearAll": "Clear All",
+      "apply": "Apply Filters",
+      "showMore": "Show More",
+      "showLess": "Show Less"
+    },
+    "sort": {
+      "label": "Sort by",
+      "newest": "Newest First",
+      "oldest": "Oldest First",
+      "priceLowHigh": "Price: Low to High",
+      "priceHighLow": "Price: High to Low",
+      "areaLargest": "Area: Largest",
+      "areaSmallest": "Area: Smallest",
+      "bedrooms": "Most Bedrooms",
+      "mostViewed": "Most Viewed",
+      "mostSaved": "Most Saved"
+    },
+    "badges": {
+      "featured": "Featured",
+      "new": "New",
+      "match": "Match",
+      "sold": "Sold",
+      "pending": "Pending"
+    },
+    "actions": {
+      "save": "Save property",
+      "unsave": "Remove from saved",
+      "share": "Share",
+      "contact": "Contact Agent",
+      "viewDetails": "View Details",
+      "schedule": "Schedule Viewing"
+    },
+    "stats": {
+      "views": "views",
+      "yield": "yield",
+      "saves": "saves"
+    },
+    "propertyTypes": {
+      "apartment": "Apartment",
+      "house": "House",
+      "office": "Office",
+      "retail": "Retail",
+      "industrial": "Industrial",
+      "land": "Land",
+      "mixedUse": "Mixed Use",
+      "unknown": "Unknown"
+    },
+    "listingTypes": {
+      "sale": "For Sale",
+      "rent": "For Rent",
+      "both": "Sale or Rent"
+    },
+    "amenities": {
+      "pool": "Swimming Pool",
+      "gym": "Gym",
+      "parking": "Parking",
+      "security": "24/7 Security",
+      "elevator": "Elevator",
+      "balcony": "Balcony",
+      "garden": "Garden",
+      "storage": "Storage",
+      "laundry": "Laundry",
+      "ac": "Air Conditioning",
+      "heating": "Central Heating",
+      "doorman": "Doorman",
+      "rooftop": "Rooftop Access",
+      "petsAllowed": "Pets Allowed"
+    },
+    "features": {
+      "renovated": "Recently Renovated",
+      "newConstruction": "New Construction",
+      "oceanView": "Ocean View",
+      "cityView": "City View",
+      "mountainView": "Mountain View",
+      "furnished": "Fully Furnished",
+      "smartHome": "Smart Home",
+      "solarPanels": "Solar Panels",
+      "evCharging": "EV Charging",
+      "cornerUnit": "Corner Unit",
+      "highCeilings": "High Ceilings",
+      "walkInCloset": "Walk-in Closet",
+      "openFloorPlan": "Open Floor Plan",
+      "investmentReady": "Investment Ready"
+    },
+    "priceRanges": {
+      "under100k": "Under $100K",
+      "100kTo250k": "$100K - $250K",
+      "250kTo500k": "$250K - $500K",
+      "500kTo1m": "$500K - $1M",
+      "1mTo2m": "$1M - $2M",
+      "2mTo5m": "$2M - $5M",
+      "over5m": "Over $5M"
+    },
+    "bedrooms": {
+      "studio": "Studio",
+      "one": "1 Bedroom",
+      "two": "2 Bedrooms",
+      "three": "3 Bedrooms",
+      "four": "4 Bedrooms",
+      "fivePlus": "5+ Bedrooms"
+    },
+    "countries": {
+      "us": "United States",
+      "il": "Israel",
+      "all": "All Countries"
+    },
+    "empty": {
+      "title": "No Properties Found",
+      "description": "Try adjusting your filters or search criteria",
+      "clearFilters": "Clear Filters"
+    },
+    "loading": "Loading properties...",
+    "results": "{count} properties found",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {current} of {total}",
+      "showing": "Showing {start}-{end} of {total}"
+    },
+    "detail": {
+      "overview": "Overview",
+      "description": "Description",
+      "features": "Features & Amenities",
+      "location": "Location",
+      "investment": "Investment Analysis",
+      "legal": "Legal Information",
+      "neighborhood": "Neighborhood",
+      "similarProperties": "Similar Properties",
+      "contactAgent": "Contact Agent",
+      "requestInfo": "Request Information",
+      "scheduleViewing": "Schedule a Viewing",
+      "makeOffer": "Make an Offer",
+      "yearBuilt": "Year Built",
+      "lotSize": "Lot Size",
+      "parking": "Parking",
+      "floors": "Floors",
+      "hoaFees": "HOA Fees",
+      "propertyTax": "Property Tax",
+      "estimatedRent": "Est. Monthly Rent",
+      "rentalYield": "Rental Yield"
+    },
+    "insights": {
+      "title": "AI Insights",
+      "analysis": "Property Analysis",
+      "neighborhood": "Neighborhood Guide",
+      "legal": "Legal Checklist",
+      "investment": "Investment Projection",
+      "comparison": "Market Comparison",
+      "risks": "Risk Assessment",
+      "generating": "Generating insights...",
+      "generated": "AI-generated analysis"
+    },
+    "saved": {
+      "title": "Saved Properties",
+      "subtitle": "Properties you've saved for later",
+      "empty": "You haven't saved any properties yet",
+      "emptyDescription": "Click the heart icon on any property to save it here",
+      "browseProperties": "Browse Properties",
+      "notes": "Notes",
+      "addNote": "Add a note",
+      "removeFromSaved": "Remove from Saved"
+    },
+    "matchReasons": {
+      "withinBudget": "Within your budget",
+      "nearBudget": "Close to your budget",
+      "preferredLocation": "In your preferred location",
+      "preferredType": "Matches your property preference",
+      "highYield": "High rental yield",
+      "goodYield": "Good rental yield"
+    }
+  },
+  "marketing": {
+    "brand": "GlobalNest",
+    "nav": {
+      "home": "Home",
+      "properties": "Properties",
+      "howItWorks": "How It Works",
+      "about": "About",
+      "contact": "Contact",
+      "signIn": "Sign In",
+      "getStarted": "Get Started"
+    },
+    "footer": {
+      "sections": {
+        "platform": "Platform",
+        "investors": "For Investors",
+        "professionals": "For Professionals",
+        "company": "Company"
+      },
+      "links": {
+        "features": "Features",
+        "pricing": "Pricing",
+        "marketplace": "Marketplace",
+        "financingHub": "Financing Hub",
+        "guides": "Investment Guides",
+        "dashboard": "Dashboard",
+        "partnerProgram": "Partner Program",
+        "forAgents": "For Agents",
+        "resources": "Resources",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service"
+      },
+      "copyright": "GlobalNest. Empowering investors worldwide."
+    },
+    "howItWorks": {
+      "hero": {
+        "title": "How GlobalNest Works",
+        "description": "Your complete guide to investing in global real estate with confidence and ease",
+        "cta": "Start Your Journey"
+      },
+      "steps": {
+        "title": "Your Investment Journey in 5 Simple Steps",
+        "description": "From profile creation to closing your investment, we guide you every step of the way",
+        "profile": {
+          "title": "Create Your Profile",
+          "description": "Tell us about your investment goals, budget, and preferences. Our AI analyzes your profile to understand what you're looking for.",
+          "details": {
+            "goals": "Define your investment objectives and timeline",
+            "budget": "Set your budget and financing preferences",
+            "preferences": "Choose your preferred locations and property types"
+          }
+        },
+        "browse": {
+          "title": "Browse Matched Properties",
+          "description": "Our AI finds properties that perfectly match your investment criteria, verified for quality and potential.",
+          "details": {
+            "ai": "AI-powered property matching based on your profile",
+            "verified": "Only vetted properties from trusted developers",
+            "detailed": "Comprehensive property information and analytics"
+          }
+        },
+        "insights": {
+          "title": "Get Expert Insights",
+          "description": "Receive detailed property analysis, market insights, and risk assessments powered by AI and local expertise.",
+          "details": {
+            "market": "Market trends and investment potential analysis",
+            "legal": "Legal compliance and documentation review",
+            "financial": "Financial projections and ROI calculations"
+          }
+        },
+        "connect": {
+          "title": "Connect with Agents",
+          "description": "Get matched with verified local real estate professionals who specialize in your target markets.",
+          "details": {
+            "agents": "Vetted real estate agents with local expertise",
+            "lawyers": "Licensed attorneys for legal guidance",
+            "advisors": "Financial and tax advisors for cross-border deals"
+          }
+        },
+        "close": {
+          "title": "Close Your Investment",
+          "description": "Complete your purchase with our secure, streamlined process and comprehensive support.",
+          "details": {
+            "documents": "Digital document management and e-signatures",
+            "secure": "Secure payment processing and fund transfers",
+            "support": "Dedicated support throughout the closing process"
+          }
+        }
+      },
+      "forInvestors": {
+        "title": "Built for Investors",
+        "description": "Everything you need to succeed in global real estate investment",
+        "benefits": {
+          "personalized": {
+            "title": "Personalized Experience",
+            "description": "AI-driven recommendations tailored to your investment goals, budget, and risk tolerance"
+          },
+          "vetted": {
+            "title": "Vetted Opportunities",
+            "description": "Every property and professional is thoroughly verified to ensure quality and trustworthiness"
+          },
+          "insights": {
+            "title": "Expert Insights",
+            "description": "Access to market data, legal guidance, and financial analysis from local experts"
+          },
+          "global": {
+            "title": "Global Reach",
+            "description": "Invest in properties across multiple countries with unified platform and support"
+          }
+        }
+      },
+      "forAgents": {
+        "title": "For Real Estate Professionals",
+        "description": "Join our network of verified professionals and connect with qualified investors",
+        "benefits": {
+          "qualified": {
+            "title": "Qualified Leads",
+            "description": "Connect with serious investors who have completed financial qualification"
+          },
+          "tools": {
+            "title": "Professional Tools",
+            "description": "Access our deal room, document management, and client communication tools"
+          },
+          "network": {
+            "title": "Global Network",
+            "description": "Collaborate with international professionals and expand your business reach"
+          }
+        },
+        "cta": "Become a Partner"
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "description": "Everything you need to know about investing through GlobalNest",
+        "items": [
+          {
+            "question": "How much does it cost to use GlobalNest?",
+            "answer": "GlobalNest offers a free Explorer plan to browse properties and access basic features. Our Pro plan ($49/month) includes unlimited AI analysis, financing tools, and full deal room access. There are no hidden fees or commissions on property purchases."
+          },
+          {
+            "question": "Is investing abroad safe through GlobalNest?",
+            "answer": "Safety is our top priority. We only list properties from verified developers and connect you with vetted legal professionals who perform due diligence. Our secure deal room ensures all transactions are protected, and we provide comprehensive insurance options for your investment."
+          },
+          {
+            "question": "Can I get financing for international properties?",
+            "answer": "Yes! Our Financing Hub connects you with both local and international lenders who specialize in cross-border mortgages. We work with Israeli banks offering international financing and local lenders in your target country to find the best rates and terms."
+          },
+          {
+            "question": "How long does the investment process take?",
+            "answer": "The timeline varies by market and property type, but typically ranges from 60-90 days from offer to closing. Our platform streamlines the process significantly compared to traditional methods, with digital documentation and automated compliance checks."
+          },
+          {
+            "question": "Do I need to travel to buy a property?",
+            "answer": "While we recommend visiting the property if possible, it's not required. Our platform includes virtual tours, video consultations with local agents, and comprehensive property reports. Many of our investors complete purchases entirely remotely with confidence."
+          },
+          {
+            "question": "What markets do you cover?",
+            "answer": "We currently offer properties in Israel, United States, Europe (Greece, Cyprus, Portugal, Spain), and UAE. We're continuously expanding to new markets based on investment demand and opportunity quality."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Ready to Start Your Investment Journey?",
+        "description": "Join thousands of investors who trust GlobalNest for their global real estate investments",
+        "primary": "Create Free Account",
+        "secondary": "Talk to an Expert"
+      }
+    },
+    "about": {
+      "hero": {
+        "title": "About GlobalNest",
+        "description": "We're on a mission to democratize global real estate investment and empower investors worldwide"
+      },
+      "mission": {
+        "badge": "Our Mission",
+        "title": "Connecting Investors with Global Opportunities",
+        "description": "GlobalNest was founded on the belief that investing in real estate shouldn't be limited by geography, language barriers, or lack of local connections. We're building the world's first truly global real estate operating system.",
+        "vision": "Our vision is to make international property investment as simple and accessible as investing in your home country, with the trust, transparency, and support you deserve."
+      },
+      "story": {
+        "title": "Our Story",
+        "paragraph1": "GlobalNest was born from a personal challenge faced by our founders—American investors who wanted to invest in Israeli real estate but were overwhelmed by the complexity, language barriers, and lack of trusted local partners.",
+        "paragraph2": "After experiencing the frustration firsthand, we realized this wasn't just an American-Israeli problem. Millions of investors worldwide face the same barriers when trying to invest across borders. The process was fragmented, risky, and often resulted in missed opportunities or costly mistakes.",
+        "paragraph3": "In 2023, we set out to solve this problem by building a platform that combines AI-powered property matching, verified professional networks, and secure deal management—all in one place. Today, GlobalNest serves investors across 15+ countries and continues to expand to new markets every quarter."
+      },
+      "stats": {
+        "investors": "Active Investors",
+        "properties": "Properties Listed",
+        "markets": "Global Markets",
+        "professionals": "Verified Professionals"
+      },
+      "values": {
+        "title": "Our Core Values",
+        "description": "The principles that guide everything we do",
+        "trust": {
+          "title": "Trust",
+          "description": "We rigorously vet every property and professional to ensure quality and reliability"
+        },
+        "transparency": {
+          "title": "Transparency",
+          "description": "Clear information, honest communication, and no hidden fees or surprises"
+        },
+        "expertise": {
+          "title": "Expertise",
+          "description": "Combining AI technology with local market knowledge and professional guidance"
+        },
+        "empowerment": {
+          "title": "Empowerment",
+          "description": "Giving investors the tools, knowledge, and confidence to make informed decisions"
+        }
+      },
+      "team": {
+        "title": "Meet Our Team",
+        "description": "Led by experienced real estate and technology professionals",
+        "ceo": {
+          "name": "David Cohen",
+          "role": "CEO & Co-Founder",
+          "bio": "Former real estate investor with 15+ years of experience in international property markets"
+        },
+        "cto": {
+          "name": "Sarah Chen",
+          "role": "CTO & Co-Founder",
+          "bio": "AI and machine learning expert, previously led engineering at major proptech companies"
+        },
+        "coo": {
+          "name": "Michael Levy",
+          "role": "COO",
+          "bio": "Operations specialist with background in fintech and cross-border transactions"
+        },
+        "head": {
+          "name": "Rachel Green",
+          "role": "Head of Investor Relations",
+          "bio": "Real estate attorney turned investor advocate, passionate about client education"
+        }
+      },
+      "partners": {
+        "title": "Trusted Partners",
+        "description": "We work with leading organizations to provide the best service to our investors"
+      },
+      "cta": {
+        "title": "Ready to Invest with Confidence?",
+        "description": "Join our community of global real estate investors today",
+        "primary": "Get Started",
+        "secondary": "Contact Us"
+      }
+    },
+    "contact": {
+      "hero": {
+        "title": "Get in Touch",
+        "description": "Have questions? We're here to help. Reach out to our team and we'll get back to you within 24 hours."
+      },
+      "methods": {
+        "phone": {
+          "title": "Call Us",
+          "value": "+1 (212) 555-0123",
+          "description": "Mon-Fri 9am-6pm EST"
+        },
+        "email": {
+          "title": "Email Us",
+          "value": "contact@globalnest.com",
+          "description": "We'll respond within 24 hours"
+        },
+        "chat": {
+          "title": "Live Chat",
+          "value": "Chat with us",
+          "description": "Available during business hours"
+        }
+      },
+      "form": {
+        "title": "Send us a Message",
+        "description": "Fill out the form below and we'll get back to you as soon as possible",
+        "name": "Full Name",
+        "namePlaceholder": "John Doe",
+        "email": "Email Address",
+        "emailPlaceholder": "john@example.com",
+        "phone": "Phone Number",
+        "phonePlaceholder": "+1 (555) 000-0000",
+        "investorType": "I am a...",
+        "investorTypePlaceholder": "Select your investor type",
+        "investorTypes": {
+          "firstTime": "First-time investor",
+          "experienced": "Experienced investor",
+          "professional": "Real estate professional",
+          "agent": "Agent/Broker"
+        },
+        "message": "Message",
+        "messagePlaceholder": "Tell us how we can help you...",
+        "submit": "Send Message",
+        "sending": "Sending...",
+        "privacy": "By submitting this form, you agree to our Privacy Policy and Terms of Service",
+        "successTitle": "Message Sent!",
+        "successMessage": "Thank you for contacting us. We'll get back to you within 24 hours."
+      },
+      "offices": {
+        "title": "Our Offices",
+        "newYork": {
+          "city": "New York",
+          "address": "123 Wall Street, Suite 1000\nNew York, NY 10005",
+          "phone": "+1 (212) 555-0123",
+          "email": "ny@globalnest.com",
+          "hours": "Mon-Fri: 9am-6pm EST"
+        },
+        "telAviv": {
+          "city": "Tel Aviv",
+          "address": "45 Rothschild Boulevard\nTel Aviv, Israel 66881",
+          "phone": "+972 3-555-0123",
+          "email": "il@globalnest.com",
+          "hours": "Sun-Thu: 9am-6pm IST"
+        }
+      },
+      "social": {
+        "title": "Follow Us"
+      },
+      "map": {
+        "placeholder": "Interactive map coming soon"
+      },
+      "faq": {
+        "title": "Looking for Answers?",
+        "description": "Check out our FAQ section for quick answers to common questions",
+        "link": "Visit FAQ"
+      }
     }
   }
 }
