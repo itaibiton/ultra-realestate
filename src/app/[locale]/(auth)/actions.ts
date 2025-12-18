@@ -10,6 +10,8 @@ export type AuthResult = {
   success?: boolean;
 };
 
+export type UserRole = "investor" | "broker" | "lawyer" | "mortgage_advisor";
+
 export async function signIn(formData: FormData): Promise<AuthResult | void> {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
@@ -37,6 +39,7 @@ export async function signUp(formData: FormData): Promise<AuthResult> {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const confirmPassword = formData.get("confirmPassword") as string;
+  const role = (formData.get("role") as UserRole) || "investor";
   const locale = (await getLocale()) as Locale;
 
   if (!email || !password) {
@@ -51,6 +54,12 @@ export async function signUp(formData: FormData): Promise<AuthResult> {
     return { error: "Password must be at least 6 characters" };
   }
 
+  // Validate role
+  const validRoles: UserRole[] = ["investor", "broker", "lawyer", "mortgage_advisor"];
+  if (!validRoles.includes(role)) {
+    return { error: "Invalid role selected" };
+  }
+
   const supabase = await createClient();
 
   const { data, error } = await supabase.auth.signUp({
@@ -58,6 +67,9 @@ export async function signUp(formData: FormData): Promise<AuthResult> {
     password,
     options: {
       emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/${locale}/auth/confirm`,
+      data: {
+        role: role,
+      },
     },
   });
 
