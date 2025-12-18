@@ -393,7 +393,8 @@
   "header": {
     "menu": "Menu",
     "search": "Search...",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "settings": "Settings"
   },
   "dashboard": {
     "title": "Dashboard",

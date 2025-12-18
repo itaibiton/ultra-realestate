@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { User as SupabaseUser } from "@supabase/supabase-js";
 import {
   Globe,
   LayoutDashboard,
@@ -14,9 +13,10 @@ import {
   LifeBuoy,
   Send,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 import { NavMain } from "@/components/nav-main";
+import { isRTL, type Locale } from "@/i18n/routing";
 import { NavSecondary } from "@/components/nav-secondary";
 import { NavUser } from "@/components/nav-user";
 import {
@@ -29,13 +29,26 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { Link } from "@/i18n/navigation";
+import type { UserRole } from "@/lib/auth/roles";
+
+interface UserInfo {
+  id: string;
+  email: string;
+  role: UserRole;
+  fullName: string | null;
+  avatarUrl: string | null;
+}
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
-  user: SupabaseUser;
+  user: UserInfo;
 }
 
 export function AppSidebar({ user, ...props }: AppSidebarProps) {
   const t = useTranslations("sidebar");
+  const locale = useLocale() as Locale;
+
+  // Compute sidebar side reactively based on locale (RTL = right, LTR = left)
+  const sidebarSide = isRTL(locale) ? "right" : "left";
 
   // Navigation sections with flat structure
   const navSections = [
@@ -84,13 +97,13 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
 
   // User data for nav footer
   const userData = {
-    name: user.user_metadata?.full_name || user.email?.split("@")[0] || "User",
+    name: user.fullName || user.email?.split("@")[0] || "User",
     email: user.email || "",
-    avatar: user.user_metadata?.avatar_url || "",
+    avatar: user.avatarUrl || "",
   };
 
   return (
-    <Sidebar variant="inset" {...props}>
+    <Sidebar variant="inset" side={sidebarSide} {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>

@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Pencil, Check, Loader2, DollarSign, Target, MapPin, Building2, Clock, GraduationCap, Wallet } from "lucide-react";
+import { Pencil, Check, Loader2, DollarSign, Target, MapPin, Building2, Clock, GraduationCap, Wallet, type LucideIcon } from "lucide-react";
 import { getOnboardingProgress, completeOnboarding } from "../actions";
 import type { InvestorProfileData, PurchasePurpose, PropertyType, PurchaseTimeline, ExperienceLevel } from "@/lib/onboarding/types";
 
@@ -15,7 +15,7 @@ interface ProfileSection {
   key: string;
   questionKey: string;
   titleKey: string;
-  icon: React.ElementType;
+  icon: LucideIcon;
   values: string[];
   displayType: "badge" | "currency" | "finances";
 }
@@ -254,7 +254,7 @@ export default function SummaryPage() {
       <Card className="bg-card/50 backdrop-blur border-muted">
         <CardContent className="p-6 space-y-6">
           {sections.map((section) => {
-            const Icon = section.icon;
+            const Icon = section.icon as React.ComponentType<{ className?: string }>;
             return (
               <div key={section.key} className="space-y-2">
                 <div className="flex items-center justify-between">

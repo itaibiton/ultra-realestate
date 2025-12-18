@@ -16,6 +16,7 @@ import {
   Landmark,
   Scale,
   UserCheck,
+  type LucideIcon,
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { getOnboardingProgress } from "../actions";
@@ -23,7 +24,7 @@ import type { ProfessionalRecommendation, ProfessionalType } from "@/lib/onboard
 
 interface ProfessionalCard {
   type: ProfessionalType;
-  icon: React.ElementType;
+  icon: LucideIcon;
   priority: "high" | "medium" | "low";
   reason: string;
 }
@@ -209,7 +210,7 @@ export default function CompletePage() {
           <p className="text-sm text-muted-foreground">{t("professionals.description")}</p>
           <div className="grid gap-4">
             {professionals.map((professional) => {
-              const Icon = professional.icon;
+              const Icon = professional.icon as React.ComponentType<{ className?: string }>;
               return (
                 <Card key={professional.type} className="bg-card/50 backdrop-blur border-muted">
                   <CardContent className="p-4">

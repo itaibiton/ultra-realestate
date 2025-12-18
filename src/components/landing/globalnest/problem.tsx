@@ -1,11 +1,22 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
+import dynamic from "next/dynamic";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Translate, PlugsConnected, Brain, ShieldWarning } from "@phosphor-icons/react";
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Dynamic import for 3D Globe - disable SSR for Three.js
+const Globe = dynamic(() => import("@/components/ui/globe").then((m) => m.Globe), {
+    ssr: false,
+    loading: () => (
+        <div className="w-full h-[400px] flex items-center justify-center">
+            <div className="animate-pulse bg-secondary/50 rounded-full w-64 h-64" />
+        </div>
+    ),
+});
 
 const painPoints = [
     {
@@ -38,161 +49,24 @@ const painPoints = [
     },
 ];
 
-// Globe SVG Illustration with animated connection points
-function GlobeIllustration() {
-    return (
-        <svg
-            viewBox="0 0 400 400"
-            className="globe-svg w-full max-w-sm mx-auto"
-            fill="none"
-        >
-            {/* Globe outline */}
-            <circle
-                cx="200"
-                cy="200"
-                r="150"
-                className="stroke-muted-foreground/30"
-                strokeWidth="1.5"
-                fill="none"
-            />
-
-            {/* Latitude lines (horizontal curves) */}
-            <ellipse
-                cx="200"
-                cy="140"
-                rx="130"
-                ry="30"
-                className="stroke-border/20"
-                strokeWidth="1"
-                fill="none"
-            />
-            <ellipse
-                cx="200"
-                cy="200"
-                rx="150"
-                ry="40"
-                className="stroke-border/20"
-                strokeWidth="1"
-                fill="none"
-            />
-            <ellipse
-                cx="200"
-                cy="260"
-                rx="130"
-                ry="30"
-                className="stroke-border/20"
-                strokeWidth="1"
-                fill="none"
-            />
-
-            {/* Longitude line (vertical curve) */}
-            <ellipse
-                cx="200"
-                cy="200"
-                rx="40"
-                ry="150"
-                className="stroke-border/20"
-                strokeWidth="1"
-                fill="none"
-            />
-
-            {/* Connection arcs */}
-            <path
-                d="M 120 130 Q 160 90 220 110"
-                className="globe-arc stroke-brand-500"
-                strokeWidth="2"
-                fill="none"
-                strokeLinecap="round"
-            />
-            <path
-                d="M 220 110 Q 300 130 310 180"
-                className="globe-arc stroke-brand-500"
-                strokeWidth="2"
-                fill="none"
-                strokeLinecap="round"
-            />
-            <path
-                d="M 310 180 Q 320 260 280 300"
-                className="globe-arc stroke-brand-500"
-                strokeWidth="2"
-                fill="none"
-                strokeLinecap="round"
-            />
-            <path
-                d="M 120 130 Q 100 200 130 280"
-                className="globe-arc stroke-brand-500"
-                strokeWidth="2"
-                fill="none"
-                strokeLinecap="round"
-            />
-
-            {/* Connection points (markets) */}
-            {/* North America */}
-            <circle cx="120" cy="130" r="8" className="globe-point fill-brand-500" />
-            <circle cx="120" cy="130" r="12" className="globe-point fill-brand-500/30" />
-
-            {/* Europe */}
-            <circle cx="220" cy="110" r="8" className="globe-point fill-brand-500" />
-            <circle cx="220" cy="110" r="12" className="globe-point fill-brand-500/30" />
-
-            {/* Asia */}
-            <circle cx="310" cy="180" r="8" className="globe-point fill-brand-500" />
-            <circle cx="310" cy="180" r="12" className="globe-point fill-brand-500/30" />
-
-            {/* Australia */}
-            <circle cx="280" cy="300" r="8" className="globe-point fill-brand-500" />
-            <circle cx="280" cy="300" r="12" className="globe-point fill-brand-500/30" />
-
-            {/* South America */}
-            <circle cx="130" cy="280" r="8" className="globe-point fill-brand-500" />
-            <circle cx="130" cy="280" r="12" className="globe-point fill-brand-500/30" />
-        </svg>
-    );
-}
 
 export function Problem() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Globe animation - scroll-linked, completes when centered
-            const tl = gsap.timeline({
+            // Globe container animation - scroll-linked fade in
+            gsap.from(".globe-container", {
                 scrollTrigger: {
                     trigger: containerRef.current,
                     start: "top 80%",
-                    end: "top 30%",
+                    end: "top 40%",
                     scrub: 0.5,
                 },
-            });
-
-            // 1. Globe fades in and scales up
-            tl.from(".globe-svg", {
                 opacity: 0,
-                scale: 0.8,
-                duration: 0.4,
+                scale: 0.9,
+                duration: 0.6,
             });
-
-            // 2. Connection points appear
-            tl.from(".globe-point", {
-                opacity: 0,
-                scale: 0,
-                stagger: 0.05,
-                duration: 0.3,
-            }, "-=0.2");
-
-            // 3. Arc paths draw
-            const arcs = document.querySelectorAll(".globe-arc");
-            arcs.forEach((arc) => {
-                const path = arc as SVGPathElement;
-                const length = path.getTotalLength();
-                gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-            });
-
-            tl.to(".globe-arc", {
-                strokeDashoffset: 0,
-                stagger: 0.1,
-                duration: 0.4,
-            }, "-=0.2");
 
             // Header text animation
             gsap.from(".problem-header", {
@@ -230,27 +104,24 @@ export function Problem() {
 
             <div className="container mx-auto px-4 relative z-10">
                 {/* Centered content wrapper */}
-                <div className="max-w-5xl mx-auto">
-                    {/* Header + Globe side by side on desktop, stacked on mobile */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-                        {/* Text content - left side */}
-                        <div className="problem-header text-center lg:text-start order-2 lg:order-1">
-                            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
-                                Global Investing is{" "}
-                                <span className="text-muted-foreground line-through decoration-red-500/50 decoration-2">
-                                    Broken
-                                </span>
-                            </h2>
-                            <p className="text-muted-foreground text-lg leading-relaxed">
-                                Traditional international real estate investing is a fragmented, intimidating maze.
-                                It shouldn&apos;t be valid only for the ultra-wealthy.
-                            </p>
-                        </div>
+                <div className="max-w-4xl mx-auto">
+                    {/* Title above globe - centered */}
+                    <div className="problem-header text-center mb-8">
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+                            Global Investing is{" "}
+                            <span className="text-muted-foreground line-through decoration-yellow-500/50">
+                                Broken
+                            </span>
+                        </h2>
+                        <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
+                            Traditional international real estate investing is a fragmented, intimidating maze.
+                            It shouldn&apos;t be valid only for the ultra-wealthy.
+                        </p>
+                    </div>
 
-                        {/* Globe illustration - right side */}
-                        <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-                            <GlobeIllustration />
-                        </div>
+                    {/* 3D Globe - centered below title */}
+                    <div className="globe-container flex justify-center mb-16">
+                        <Globe className="w-full max-w-2xl h-[350px] md:h-[450px] lg:h-[500px]" />
                     </div>
 
                     {/* Pain points grid */}

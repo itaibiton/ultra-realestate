@@ -6,6 +6,7 @@ import {
   Landmark,
   Scale,
   FileCheck,
+  type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedPing, GlassPanel, GradientText } from "@/components/shared";
@@ -291,7 +292,7 @@ async function DealCard() {
 }
 
 interface InfoNodeProps {
-  icon: React.ElementType;
+  icon: LucideIcon;
   label: string;
   value: string;
   color: "blue" | "purple" | "green";

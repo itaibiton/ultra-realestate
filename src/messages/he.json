@@ -393,7 +393,8 @@
   "header": {
     "menu": "תפריט",
     "search": "חיפוש...",
-    "notifications": "התראות"
+    "notifications": "התראות",
+    "settings": "הגדרות"
   },
   "dashboard": {
     "title": "לוח בקרה",
