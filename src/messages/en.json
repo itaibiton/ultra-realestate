@@ -8,7 +8,12 @@
       "partners": "Partners"
     },
     "login": "Log in",
-    "cta": "Start Journey"
+    "cta": "Start Journey",
+    "settings": "Settings",
+    "lightMode": "Light Mode",
+    "darkMode": "Dark Mode",
+    "english": "English",
+    "hebrew": "עברית"
   },
   "hero": {
     "badge": "The Real Estate OS for the Global Investor",

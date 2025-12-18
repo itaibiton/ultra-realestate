@@ -28,10 +28,25 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Brand Colors */
+  /* Brand Colors - Full Amber Scale */
   --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
   --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
   --color-brand-900: var(--brand-900);
+  --color-brand-950: var(--brand-950);
+
+  /* Chart Colors */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
 
   /* Feature Colors */
   --color-feature-blue: var(--feature-blue);
@@ -51,8 +66,8 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* Fonts */
-  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  /* Fonts - Nunito Sans (Nova style) */
+  --font-sans: var(--font-nunito-sans), var(--font-heebo), system-ui, -apple-system, sans-serif;
 
   /* Custom Animations */
   --animate-pulse-slow: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -73,94 +88,146 @@
 }
 
 /* --- Light Mode Variables --- */
+/* Nova Style: Amber Theme with Neutral Base */
 :root {
-  --radius: 0.75rem;
+  --radius: 0.5rem;
 
-  /* Core Colors */
+  /* Core Colors - Neutral Base */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.145 0 0);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.145 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.4 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.145 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.9 0 0);
-  --input: oklch(0.9 0 0);
-  --ring: oklch(0.59 0.2 255);
 
-  /* Brand Colors */
-  --brand-50: oklch(0.97 0.02 240);
-  --brand-500: oklch(0.59 0.2 255);
-  --brand-900: oklch(0.33 0.1 230);
+  /* Primary - Amber 500 */
+  --primary: oklch(0.77 0.16 70);
+  --primary-foreground: oklch(0.28 0.07 46);
+
+  /* Secondary - Neutral */
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+
+  /* Muted */
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+
+  /* Accent - Amber 100 */
+  --accent: oklch(0.96 0.06 96);
+  --accent-foreground: oklch(0.28 0.07 46);
+
+  /* Destructive */
+  --destructive: oklch(0.577 0.245 27.325);
+
+  /* Border & Input */
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+
+  /* Ring - Amber 400 */
+  --ring: oklch(0.84 0.16 84);
+
+  /* Brand Colors - Amber Scale */
+  --brand-50: oklch(0.99 0.02 95);
+  --brand-100: oklch(0.96 0.06 96);
+  --brand-200: oklch(0.92 0.12 96);
+  --brand-300: oklch(0.88 0.15 92);
+  --brand-400: oklch(0.84 0.16 84);
+  --brand-500: oklch(0.77 0.16 70);
+  --brand-600: oklch(0.67 0.16 58);
+  --brand-700: oklch(0.56 0.15 49);
+  --brand-800: oklch(0.47 0.12 46);
+  --brand-900: oklch(0.41 0.11 46);
+  --brand-950: oklch(0.28 0.07 46);
 
   /* Feature Colors */
   --feature-blue: oklch(0.59 0.2 255);
   --feature-purple: oklch(0.55 0.25 300);
   --feature-green: oklch(0.65 0.2 145);
-  --feature-orange: oklch(0.7 0.2 50);
+  --feature-orange: oklch(0.77 0.16 70);
   --feature-pink: oklch(0.65 0.22 350);
   --feature-indigo: oklch(0.55 0.25 280);
+
+  /* Chart Colors */
+  --chart-1: oklch(0.77 0.16 70);
+  --chart-2: oklch(0.67 0.16 58);
+  --chart-3: oklch(0.56 0.15 49);
+  --chart-4: oklch(0.84 0.16 84);
+  --chart-5: oklch(0.88 0.15 92);
 
   /* Glass Effect Variables */
   --glass-bg: oklch(1 0 0 / 60%);
   --glass-border: oklch(0 0 0 / 8%);
   --grid-color: oklch(0 0 0 / 5%);
 
-  /* Sidebar Colors - Light Mode (improved contrast) */
-  --sidebar: hsl(220 14% 96%);
-  --sidebar-foreground: hsl(240 5.3% 26.1%);
-  --sidebar-primary: hsl(240 5.9% 10%);
-  --sidebar-primary-foreground: hsl(0 0% 98%);
-  --sidebar-accent: hsl(220 14% 91%);
-  --sidebar-accent-foreground: hsl(240 5.9% 10%);
-  --sidebar-border: hsl(220 13% 88%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  /* Sidebar Colors - Light Mode with Amber accent */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.77 0.16 70);
+  --sidebar-primary-foreground: oklch(0.28 0.07 46);
+  --sidebar-accent: oklch(0.96 0.06 96);
+  --sidebar-accent-foreground: oklch(0.28 0.07 46);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.84 0.16 84);
 
 }
 
 /* --- Dark Mode Variables --- */
+/* Nova Style: Amber Theme Dark Mode */
 .dark {
-  --background: oklch(0.08 0 0);
-  --foreground: oklch(0.9 0 0);
-  --card: oklch(0.12 0 0);
-  --card-foreground: oklch(0.9 0 0);
-  --popover: oklch(0.12 0 0);
-  --popover-foreground: oklch(0.9 0 0);
-  --primary: oklch(1 0 0);
-  --primary-foreground: oklch(0 0 0);
-  --secondary: oklch(1 0 0 / 5%);
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(1 0 0 / 5%);
-  --muted-foreground: oklch(0.6 0 0);
-  --accent: oklch(1 0 0 / 10%);
-  --accent-foreground: oklch(1 0 0);
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+
+  /* Primary - Amber 400 (brighter for dark mode) */
+  --primary: oklch(0.84 0.16 84);
+  --primary-foreground: oklch(0.28 0.07 46);
+
+  /* Secondary */
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+
+  /* Muted */
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+
+  /* Accent - Amber tinted dark */
+  --accent: oklch(0.269 0.02 70);
+  --accent-foreground: oklch(0.985 0 0);
+
+  /* Destructive */
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 5%);
-  --input: oklch(1 0 0 / 5%);
-  --ring: oklch(0.59 0.2 255);
+
+  /* Border & Input */
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+
+  /* Ring - Amber 400 */
+  --ring: oklch(0.84 0.16 84);
+
+  /* Chart Colors - Amber scale for dark */
+  --chart-1: oklch(0.84 0.16 84);
+  --chart-2: oklch(0.77 0.16 70);
+  --chart-3: oklch(0.67 0.16 58);
+  --chart-4: oklch(0.88 0.15 92);
+  --chart-5: oklch(0.56 0.15 49);
 
   /* Glass Effect Variables - Dark */
   --glass-bg: oklch(1 0 0 / 3%);
   --glass-border: oklch(1 0 0 / 8%);
   --grid-color: oklch(1 0 0 / 3%);
 
-  /* Sidebar Colors - Dark Mode (improved contrast with blue tints) */
-  --sidebar: hsl(224 20% 10%);
-  --sidebar-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-primary: hsl(217.2 91.2% 59.8%);
-  --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(217 25% 18%);
-  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-border: hsl(217 15% 20%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  /* Sidebar Colors - Dark Mode with Amber accent */
+  --sidebar: oklch(0.145 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.84 0.16 84);
+  --sidebar-primary-foreground: oklch(0.28 0.07 46);
+  --sidebar-accent: oklch(0.269 0.02 70);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.84 0.16 84);
 }
 
 /* --- Keyframes --- */
@@ -202,6 +269,7 @@
 }
 
 /* --- Hero Button Styles --- */
+/* Amber/Nova Design System */
 .hero-shiny-button {
   cursor: pointer;
   position: relative;
@@ -210,13 +278,14 @@
   justify-content: center;
   overflow: hidden;
   transition: all 0.25s ease;
-  background: radial-gradient(65.28% 65.28% at 50% 100%, rgba(59, 130, 246, 0.8) 0%, rgba(59, 130, 246, 0) 100%), linear-gradient(0deg, #3b82f6, #1d4ed8);
+  background: radial-gradient(65.28% 65.28% at 50% 100%, oklch(0.84 0.16 84 / 0.8) 0%, oklch(0.84 0.16 84 / 0) 100%), linear-gradient(0deg, oklch(0.77 0.16 70), oklch(0.67 0.16 58));
   border-radius: 0.75rem;
   border: none;
   outline: none;
   padding: 12px 18px;
   min-height: 48px;
   min-width: 102px;
+  box-shadow: 0 4px 14px oklch(0.77 0.16 70 / 0.4);
 }
 
 .hero-shiny-button::before,
@@ -229,14 +298,19 @@
 
 .hero-shiny-button::before {
   inset: 1px;
-  background: linear-gradient(177.95deg, rgba(255, 255, 255, 0.19) 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(177.95deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%);
   border-radius: calc(0.75rem - 1px);
 }
 
 .hero-shiny-button::after {
   inset: 2px;
-  background: radial-gradient(65.28% 65.28% at 50% 100%, rgba(59, 130, 246, 0.8) 0%, rgba(59, 130, 246, 0) 100%), linear-gradient(0deg, #3b82f6, #1d4ed8);
+  background: radial-gradient(65.28% 65.28% at 50% 100%, oklch(0.84 0.16 84 / 0.8) 0%, oklch(0.84 0.16 84 / 0) 100%), linear-gradient(0deg, oklch(0.77 0.16 70), oklch(0.67 0.16 58));
   border-radius: calc(0.75rem - 2px);
+}
+
+.hero-shiny-button:hover {
+  box-shadow: 0 6px 20px oklch(0.77 0.16 70 / 0.5);
+  transform: translateY(-2px);
 }
 
 .hero-shiny-button:active {
@@ -259,7 +333,7 @@
   pointer-events: none;
   width: 2px;
   height: 2px;
-  background-color: #fff;
+  background-color: oklch(0.99 0.02 95);
   border-radius: 9999px;
 }
 
@@ -268,12 +342,12 @@
   gap: 6px;
   position: relative;
   width: 100%;
-  color: white;
+  color: oklch(0.28 0.07 46);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.5;
   transition: color 0.2s ease-in-out;
 }
@@ -282,7 +356,7 @@
   width: 18px;
   height: 18px;
   transition: transform 0.3s ease;
-  stroke: white;
+  stroke: oklch(0.28 0.07 46);
   fill: none;
 }
 

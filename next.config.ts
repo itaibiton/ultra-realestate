@@ -12,6 +12,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Optimize Phosphor Icons bundle size
+  experimental: {
+    optimizePackageImports: ['@phosphor-icons/react'],
+  },
 };
 
 export default withNextIntl(nextConfig);

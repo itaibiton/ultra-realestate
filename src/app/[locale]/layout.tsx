@@ -3,7 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, isRTL, type Locale } from "@/i18n/routing";
-import { inter, heebo } from "@/lib/fonts";
+import { nunitoSans, heebo } from "@/lib/fonts";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "sonner";
 import "../globals.css";
@@ -67,7 +67,7 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const messages = await getMessages();
   const rtl = isRTL(locale as Locale);
-  const fontClass = locale === "he" ? heebo.variable : inter.variable;
+  const fontClass = locale === "he" ? heebo.variable : nunitoSans.variable;
 
   return (
     <html lang={locale} dir={rtl ? "rtl" : "ltr"} suppressHydrationWarning>
