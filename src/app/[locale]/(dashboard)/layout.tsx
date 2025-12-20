@@ -43,11 +43,11 @@ export default async function DashboardLayout({ children, params }: DashboardLay
     <RoleProvider user={userInfo}>
       <SidebarProvider>
         <AppSidebar user={userInfo} />
-        <SidebarInset>
+        <SidebarInset className="max-h-svh overflow-hidden">
           <SiteHeader />
-          <main className="flex-1 p-6">
+          <div className="flex-1 p-4 min-h-0 overflow-auto">
             {children}
-          </main>
+          </div>
         </SidebarInset>
       </SidebarProvider>
     </RoleProvider>

@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
 import {
   Card,
   CardContent,
@@ -59,7 +60,9 @@ export default function SignUpPage() {
     setError(null);
   }
 
-  async function handleSubmit(formData: FormData) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
     if (!selectedRole) {
       setError(t("selectRoleError"));
       return;
@@ -68,6 +71,7 @@ export default function SignUpPage() {
     setIsLoading(true);
     setError(null);
 
+    const formData = new FormData(e.currentTarget);
     // Add role to form data
     formData.append("role", selectedRole);
 
@@ -77,6 +81,9 @@ export default function SignUpPage() {
       setError(result.error);
       setIsLoading(false);
     } else if (result?.success) {
+      toast.success(t("checkEmail"), {
+        description: t("checkEmailDescription"),
+      });
       setSuccess(true);
       setIsLoading(false);
     }
@@ -156,7 +163,7 @@ export default function SignUpPage() {
               </div>
             ) : (
               /* Step 2: Credentials Form */
-              <form action={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="email">{t("email")}</Label>
                   <div className="relative">
@@ -259,7 +266,7 @@ export default function SignUpPage() {
                   >
                     {isLoading ? (
                       <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <Loader2 className="w-4 h-4 me-2 animate-spin" />
                         {t("signingUp")}
                       </>
                     ) : (

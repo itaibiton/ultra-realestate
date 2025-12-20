@@ -384,12 +384,13 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
 DECLARE
-  v_role user_role;
+  v_role public.user_role;
 BEGIN
   -- Get role from metadata, default to investor
+  -- NOTE: Must use public.user_role because supabase_auth_admin has search_path=auth
   v_role := COALESCE(
-    (NEW.raw_user_meta_data->>'role')::user_role,
-    'investor'
+    (NEW.raw_user_meta_data->>'role')::public.user_role,
+    'investor'::public.user_role
   );
 
   -- Insert user with role
@@ -404,13 +405,13 @@ BEGIN
 
   -- Create appropriate profile based on role
   CASE v_role
-    WHEN 'investor' THEN
+    WHEN 'investor'::public.user_role THEN
       INSERT INTO public.investor_profiles (user_id) VALUES (NEW.id);
-    WHEN 'broker' THEN
+    WHEN 'broker'::public.user_role THEN
       INSERT INTO public.broker_profiles (user_id) VALUES (NEW.id);
-    WHEN 'lawyer' THEN
+    WHEN 'lawyer'::public.user_role THEN
       INSERT INTO public.lawyer_profiles (user_id) VALUES (NEW.id);
-    WHEN 'mortgage_advisor' THEN
+    WHEN 'mortgage_advisor'::public.user_role THEN
       INSERT INTO public.mortgage_advisor_profiles (user_id) VALUES (NEW.id);
   END CASE;
 

@@ -1,10 +1,12 @@
 "use client";
 
+import { useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Sparkles, ArrowRight, Clock } from "lucide-react";
+import { toast } from "sonner";
 
 /**
  * Welcome Page - Entry point for the onboarding flow
@@ -15,8 +17,20 @@ import { Sparkles, ArrowRight, Clock } from "lucide-react";
  */
 export default function WelcomePage() {
   const t = useTranslations("onboarding");
+  const tAuth = useTranslations("auth");
   const locale = useLocale();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const verified = searchParams.get("verified") === "true";
+
+  // Show success toast when email is verified
+  useEffect(() => {
+    if (verified) {
+      toast.success(tAuth("emailVerified"), {
+        description: tAuth("emailVerifiedDescription"),
+      });
+    }
+  }, [verified, tAuth]);
 
   const handleStartOnboarding = () => {
     router.push(`/${locale}/chat`);

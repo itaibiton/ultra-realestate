@@ -356,7 +356,9 @@
     "and": "and",
     "privacyPolicy": "Privacy Policy",
     "showPassword": "Show password",
-    "hidePassword": "Hide password"
+    "hidePassword": "Hide password",
+    "emailVerified": "Email verified!",
+    "emailVerifiedDescription": "Your email has been verified successfully. You can now continue with your account setup."
   },
   "errors": {
     "authErrorTitle": "Something went wrong",
@@ -468,19 +470,61 @@
     },
     "summary": {
       "title": "Your Investment Profile",
+      "subtitle": "Building your profile...",
       "description": "Here's a summary of your preferences. You can edit any section before confirming.",
+      "progress": "{completed} of {total} completed",
       "editButton": "Edit",
       "confirmButton": "Confirm & Continue",
       "notSpecified": "Not specified",
       "processing": "Processing...",
       "sections": {
-        "goals": "Investment Goal",
-        "budget": "Investment Budget",
-        "markets": "Preferred Locations",
-        "property": "Property Types",
-        "timeline": "Purchase Timeline",
-        "experience": "Experience Level",
-        "finances": "Monthly Finances"
+        "location": {
+          "title": "Location",
+          "currentCountry": "Current Location",
+          "citizenship": "Citizenship",
+          "targetMarkets": "Target Markets",
+          "pending": "Not specified yet"
+        },
+        "budget": {
+          "title": "Investment Budget",
+          "amount": "Budget Amount",
+          "pending": "Not specified yet"
+        },
+        "finances": {
+          "title": "Monthly Finances",
+          "income": "Monthly Income",
+          "expenses": "Monthly Expenses",
+          "disposable": "Disposable Income",
+          "pending": "Not specified yet"
+        },
+        "profile": {
+          "title": "Investor Profile",
+          "experience": "Experience Level",
+          "risk": "Risk Tolerance",
+          "pending": "Not specified yet"
+        },
+        "goals": {
+          "title": "Investment Goals",
+          "purpose": "Main Purpose",
+          "propertyTypes": "Property Types",
+          "pending": "Not specified yet"
+        },
+        "timeline": {
+          "title": "Timeline",
+          "purchase": "Purchase Timeline",
+          "pending": "Not specified yet"
+        },
+        "contact": {
+          "title": "Contact Preference",
+          "method": "Preferred Method",
+          "pending": "Not specified yet"
+        },
+        "requirements": {
+          "title": "Special Requirements",
+          "details": "Requirements",
+          "none": "None specified",
+          "pending": "Not specified yet"
+        }
       }
     },
     "complete": {
@@ -516,38 +560,46 @@
       }
     },
     "questions": {
+      "current_country": {
+        "title": "Where are you currently located?",
+        "description": "This helps us tailor recommendations and currency settings"
+      },
+      "citizenship": {
+        "title": "What is your citizenship?",
+        "description": "This affects property ownership options and tax implications"
+      },
       "budget": {
         "title": "What's your investment budget?",
-        "description": "Enter the amount you have available for real estate investment"
+        "description": "Select your budget range and fine-tune the amount"
       },
       "purpose": {
         "title": "What's your main goal?",
         "description": "Select the primary purpose for your property purchase",
         "options": {
           "investment": "Investment",
-          "living": "Living",
-          "both": "Both"
+          "investment_desc": "Looking for rental income or capital appreciation",
+          "living": "Personal Living",
+          "living_desc": "A home for myself or my family",
+          "both": "Both",
+          "both_desc": "A property I can live in and that will grow in value"
         }
       },
       "location": {
-        "title": "Which locations interest you?",
-        "description": "Select up to 3 locations you'd like to explore",
-        "options": {
-          "israel": "Israel",
-          "usa": "United States",
-          "europe": "Europe",
-          "uae": "United Arab Emirates",
-          "other": "Other"
-        }
+        "title": "Where would you like to invest?",
+        "description": "Select the countries or regions you're interested in (up to 5)"
       },
       "property": {
         "title": "What type of property are you looking for?",
         "description": "Select all property types that interest you",
         "options": {
           "apartment": "Apartment",
+          "apartment_desc": "Condos, flats, and multi-unit buildings",
           "house": "House",
+          "house_desc": "Single-family homes and villas",
           "commercial": "Commercial",
-          "land": "Land"
+          "commercial_desc": "Retail, office, or mixed-use properties",
+          "land": "Land",
+          "land_desc": "Vacant land for development or investment"
         }
       },
       "timeline": {
@@ -555,9 +607,25 @@
         "description": "This helps us prioritize opportunities for you",
         "options": {
           "asap": "As soon as possible",
+          "asap_desc": "Ready to move quickly on the right opportunity",
           "3_6_months": "3-6 months",
+          "3_6_months_desc": "Actively searching and comparing options",
           "6_12_months": "6-12 months",
-          "1_year_plus": "1+ year"
+          "6_12_months_desc": "Planning ahead and doing research",
+          "1_year_plus": "1+ year",
+          "1_year_plus_desc": "Long-term planning and saving"
+        }
+      },
+      "risk": {
+        "title": "What's your risk tolerance?",
+        "description": "This helps us match you with suitable investment opportunities",
+        "options": {
+          "conservative": "Conservative",
+          "conservative_desc": "Prefer stable, lower-risk investments",
+          "moderate": "Moderate",
+          "moderate_desc": "Balanced approach to risk and reward",
+          "aggressive": "Aggressive",
+          "aggressive_desc": "Willing to take higher risks for higher returns"
         }
       },
       "experience": {
@@ -572,6 +640,23 @@
           "experienced_desc": "I have a portfolio of 3+ properties"
         }
       },
+      "requirements": {
+        "title": "Any special requirements or preferences?",
+        "description": "Tell us about specific needs (accessibility, proximity to schools, etc.)",
+        "placeholder": "E.g., Need wheelchair accessibility, prefer close to international schools, looking for properties with sea view..."
+      },
+      "contact": {
+        "title": "How would you like us to contact you?",
+        "description": "We'll use this to share relevant opportunities",
+        "options": {
+          "email": "Email",
+          "email_desc": "Receive updates and recommendations via email",
+          "whatsapp": "WhatsApp",
+          "whatsapp_desc": "Quick messages and instant responses",
+          "phone": "Phone Call",
+          "phone_desc": "Direct conversations with our team"
+        }
+      },
       "finances": {
         "title": "What's your monthly income and expenses?",
         "description": "This helps us calculate your purchasing power",
@@ -583,15 +668,19 @@
       }
     },
     "ai": {
-      "greeting": "Hi! I'm your GlobalNest AI assistant. I'll help you build your investment profile. Let's start with a few questions.",
-      "budget": "First, how much money do you have available for this investment?",
-      "purpose": "Great! What's your main goal - are you looking for an investment property, a place to live, or both?",
-      "location": "Which locations are you interested in? You can select up to 3.",
+      "greeting": "Hi! I'm your GlobalNest AI assistant. I'll help you build your personalized investment profile. Let's start with a few questions about you.",
+      "current_country": "First, where are you currently located? This helps me understand your situation better.",
+      "citizenship": "What is your citizenship? This is important for understanding property ownership options.",
+      "budget": "What's your investment budget? Select a range and adjust to your target amount.",
+      "purpose": "What's your main goal - are you looking for an investment property, a place to live, or both?",
+      "location": "Which countries or regions are you interested in investing in?",
       "property": "What type of property are you looking for? Select all that interest you.",
       "timeline": "When are you planning to make your purchase?",
+      "risk": "How would you describe your risk tolerance when it comes to investments?",
       "experience": "Tell me about your real estate experience. This helps me tailor my guidance.",
-      "finances": "Last question! What's your monthly income and expenses? This helps us understand your financial situation.",
-      "complete": "Perfect! I've created your investment profile. Let me show you a summary and recommend some professionals who can help."
+      "requirements": "Do you have any special requirements or preferences? Feel free to share anything specific.",
+      "contact": "Last question! How would you prefer us to reach out to you?",
+      "complete": "Perfect! I've created your personalized investment profile. Let me show you a summary and recommend some professionals who can help you achieve your goals."
     },
     "professionals": {
       "title": "Recommended Professionals",
@@ -619,6 +708,140 @@
       },
       "connectButton": "Connect with Professional",
       "skipButton": "Skip for now"
+    },
+    "professionalOnboarding": {
+      "broker": {
+        "title": "Broker Registration",
+        "subtitle": "Complete your profile to start connecting with investors",
+        "step1": {
+          "title": "License Information",
+          "description": "Enter your real estate license details"
+        },
+        "step2": {
+          "title": "Professional Details",
+          "description": "Tell us about your experience and expertise"
+        },
+        "step3": {
+          "title": "Verification Documents",
+          "description": "Upload documents to verify your credentials"
+        }
+      },
+      "lawyer": {
+        "title": "Attorney Registration",
+        "subtitle": "Complete your profile to start helping investors with legal matters",
+        "step1": {
+          "title": "Bar Information",
+          "description": "Enter your bar admission details"
+        },
+        "step2": {
+          "title": "Practice Details",
+          "description": "Tell us about your practice and expertise"
+        },
+        "step3": {
+          "title": "Verification Documents",
+          "description": "Upload documents to verify your credentials"
+        }
+      },
+      "mortgageAdvisor": {
+        "title": "Mortgage Advisor Registration",
+        "subtitle": "Complete your profile to start helping investors with financing",
+        "step1": {
+          "title": "NMLS Information",
+          "description": "Enter your NMLS and licensing details"
+        },
+        "step2": {
+          "title": "Professional Details",
+          "description": "Tell us about your loan expertise"
+        },
+        "step3": {
+          "title": "Verification Documents",
+          "description": "Upload documents to verify your credentials"
+        }
+      },
+      "steps": {
+        "licenseInfo": "License Info",
+        "barInfo": "Bar Info",
+        "nmlsInfo": "NMLS Info",
+        "details": "Details",
+        "documents": "Documents"
+      },
+      "fields": {
+        "licenseNumber": "License Number",
+        "licenseState": "License State",
+        "licenseExpiry": "License Expiry Date",
+        "brokerageName": "Brokerage Name",
+        "brokerageAddress": "Office Address",
+        "barNumber": "Bar Number",
+        "barState": "Bar State",
+        "barAdmissionDate": "Bar Admission Date",
+        "lawFirmName": "Law Firm Name",
+        "firmAddress": "Firm Address",
+        "nmlsId": "NMLS ID",
+        "companyNmlsId": "Company NMLS ID",
+        "companyName": "Company Name",
+        "companyAddress": "Office Address",
+        "licensedStates": "Licensed States",
+        "yearsExperience": "Years of Experience",
+        "specializations": "Specializations",
+        "practiceAreas": "Practice Areas",
+        "loanTypes": "Loan Types",
+        "contactPhone": "Phone Number",
+        "contactEmail": "Contact Email",
+        "websiteUrl": "Website URL",
+        "headline": "Professional Headline",
+        "bio": "Bio",
+        "languages": "Languages",
+        "hourlyRate": "Hourly Rate",
+        "consultationFee": "Consultation Fee",
+        "offersFreeConsultation": "I offer free initial consultations"
+      },
+      "documents": {
+        "license": "Real Estate License",
+        "licenseDescription": "Upload a copy of your current real estate license",
+        "insurance": "E&O Insurance Certificate",
+        "insuranceDescription": "Errors and Omissions insurance (optional but recommended)",
+        "barCertificate": "Bar Certificate",
+        "barCertificateDescription": "Upload a copy of your bar admission certificate",
+        "malpracticeInsurance": "Malpractice Insurance",
+        "malpracticeDescription": "Professional liability insurance certificate (optional)",
+        "nmlsCertificate": "NMLS Certificate",
+        "nmlsDescription": "Upload your NMLS license or certificate",
+        "stateLicense": "State License",
+        "stateLicenseDescription": "Your state mortgage license (optional)",
+        "governmentId": "Government ID",
+        "governmentIdDescription": "Driver's license or passport (optional)"
+      },
+      "whatsNext": {
+        "title": "What happens next?",
+        "broker": [
+          "Our team will review your documents within 24-48 hours",
+          "You'll receive an email when your profile is verified",
+          "Once verified, your profile will be visible to investors"
+        ],
+        "lawyer": [
+          "We'll verify your bar membership within 24-48 hours",
+          "You'll receive an email when your profile is verified",
+          "Once verified, you can connect with investors seeking legal help"
+        ],
+        "mortgageAdvisor": [
+          "We'll verify your NMLS registration within 24-48 hours",
+          "You'll receive an email when your profile is verified",
+          "Once verified, you can help investors with financing options"
+        ]
+      },
+      "actions": {
+        "next": "Next",
+        "back": "Back",
+        "complete": "Complete Registration",
+        "submitting": "Submitting..."
+      },
+      "success": {
+        "title": "Profile Saved!",
+        "description": "Your documents are under review."
+      },
+      "errors": {
+        "saveFailed": "Failed to save profile. Please try again."
+      }
     }
   },
   "landing": {

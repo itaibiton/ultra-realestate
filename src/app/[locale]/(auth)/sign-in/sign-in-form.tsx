@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
 import {
   Card,
   CardContent,
@@ -22,16 +23,28 @@ export function SignInForm() {
   const t = useTranslations("auth");
   const searchParams = useSearchParams();
   const verificationError = searchParams.get("error") === "verification_failed";
+  const verified = searchParams.get("verified") === "true";
   const [error, setError] = useState<string | null>(
     verificationError ? t("verificationFailed") : null
   );
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  async function handleSubmit(formData: FormData) {
+  // Show success toast when email is verified
+  useEffect(() => {
+    if (verified) {
+      toast.success(t("emailVerified"), {
+        description: t("emailVerifiedDescription"),
+      });
+    }
+  }, [verified, t]);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     setIsLoading(true);
     setError(null);
 
+    const formData = new FormData(e.currentTarget);
     const result = await signIn(formData);
 
     if (result?.error) {
@@ -54,7 +67,7 @@ export function SignInForm() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form action={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               {error && (
                 <div className="flex items-center gap-2 p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm animate-in fade-in slide-in-from-top-2 duration-300">
                   <AlertCircle className="w-4 h-4 shrink-0" />
@@ -118,7 +131,7 @@ export function SignInForm() {
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <Loader2 className="w-4 h-4 me-2 animate-spin" />
                     {t("signingIn")}
                   </>
                 ) : (

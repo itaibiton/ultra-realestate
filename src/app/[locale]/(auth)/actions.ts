@@ -77,9 +77,9 @@ export async function signUp(formData: FormData): Promise<AuthResult> {
     return { error: error.message };
   }
 
-  // Detect duplicate email: Supabase returns user but no session when email already exists
+  // Detect duplicate email: When email already exists, Supabase returns user with empty identities array
   // This is a security feature to prevent email enumeration
-  if (data.user && !data.session) {
+  if (data.user && data.user.identities && data.user.identities.length === 0) {
     return { error: "This email is already registered. Please sign in instead." };
   }
 

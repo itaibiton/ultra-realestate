@@ -6,9 +6,13 @@ import { ChatMessage } from "./chat-message";
 import { ChatOptions, ChatOptionCards } from "./chat-options";
 import { ChatInput } from "./chat-input";
 import { CurrencyInput } from "./currency-input";
+import { BudgetRangeInput } from "./budget-range-input";
 import { IncomeExpensesInput } from "./income-expenses-input";
+import { BudgetSlider } from "./budget-slider";
 import { ProgressBar } from "./progress-bar";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { CountrySelect } from "@/components/ui/country-select";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Question, QuestionOption } from "@/lib/onboarding/types";
 
@@ -34,17 +38,32 @@ interface ChatContainerProps {
   canGoNext?: boolean;
   t: (key: string, values?: Record<string, string | number | Date>) => string;
   className?: string;
-  // Currency input props
+  // Currency input props (legacy)
   budgetValue?: number;
   onBudgetChange?: (value: number) => void;
   budgetCurrency?: string;
   onBudgetCurrencyChange?: (currency: string) => void;
+  // Budget range props
+  budgetMinValue?: number;
+  budgetMaxValue?: number;
+  onBudgetMinChange?: (value: number) => void;
+  onBudgetMaxChange?: (value: number) => void;
   // Income/Expenses props
   incomeValue?: number;
   expensesValue?: number;
   onIncomeChange?: (value: number) => void;
   onExpensesChange?: (value: number) => void;
   locale?: string;
+  // Country select props
+  countryValue?: string;
+  onCountryChange?: (value: string) => void;
+  countriesValue?: string[];
+  onCountriesChange?: (value: string[]) => void;
+  // Open text props
+  openTextValue?: string;
+  onOpenTextChange?: (value: string) => void;
+  // Answered questions for inline display
+  answeredQuestions?: Record<number, string>;
 }
 
 /**
@@ -71,12 +90,27 @@ export function ChatContainer({
   onBudgetChange,
   budgetCurrency = "USD",
   onBudgetCurrencyChange,
+  // Budget range props
+  budgetMinValue = 0,
+  budgetMaxValue = 0,
+  onBudgetMinChange,
+  onBudgetMaxChange,
   // Income/Expenses props
   incomeValue = 0,
   expensesValue = 0,
   onIncomeChange,
   onExpensesChange,
   locale = "en",
+  // Country select props
+  countryValue = "",
+  onCountryChange,
+  countriesValue = [],
+  onCountriesChange,
+  // Open text props
+  openTextValue = "",
+  onOpenTextChange,
+  // Answered questions for inline display
+  answeredQuestions = {},
 }: ChatContainerProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -109,12 +143,29 @@ export function ChatContainer({
       return selectedOptions.length >= minRequired;
     }
 
-    if (currentQuestion.type === "currency-input") {
+    if (currentQuestion.type === "currency-input" || currentQuestion.type === "budget-slider") {
       return budgetValue > 0;
+    }
+
+    if (currentQuestion.type === "budget-range") {
+      return budgetMinValue > 0 || budgetMaxValue > 0;
     }
 
     if (currentQuestion.type === "income-expenses") {
       return incomeValue >= 0 && expensesValue >= 0;
+    }
+
+    if (currentQuestion.type === "country-select") {
+      return !!countryValue;
+    }
+
+    if (currentQuestion.type === "country-multi-select") {
+      const minRequired = currentQuestion.validation?.minSelected || 1;
+      return countriesValue.length >= minRequired;
+    }
+
+    if (currentQuestion.type === "open-text") {
+      return true; // Optional by default
     }
 
     return true;
@@ -123,25 +174,41 @@ export function ChatContainer({
   return (
     <div className={cn("flex flex-col h-full", className)}>
       {/* Progress bar */}
-      <div className="px-4 py-3 border-b">
+      <div className="shrink-0 px-4 py-2 border-b">
         <ProgressBar current={currentStep} total={totalSteps} />
       </div>
 
-      {/* Messages area */}
-      <div className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
-        {messages.map((message) => (
-          <ChatMessage
-            key={message.id}
-            role={message.role}
-            content={message.content}
-            isTyping={message.isTyping}
-          />
-        ))}
+      {/* Messages area - only messages, scrollable */}
+      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 min-h-0">
+        {messages.map((message) => {
+          // Extract step number from question message ID (format: q-{step}-{timestamp})
+          let answer: string | undefined;
+          if (message.role === "assistant" && message.id.startsWith("q-")) {
+            const stepMatch = message.id.match(/^q-(\d+)-/);
+            if (stepMatch) {
+              const step = parseInt(stepMatch[1], 10);
+              answer = answeredQuestions[step];
+            }
+          }
+          return (
+            <ChatMessage
+              key={message.id}
+              role={message.role}
+              content={message.content}
+              isTyping={message.isTyping}
+              answer={answer}
+            />
+          );
+        })}
+        <div ref={messagesEndRef} />
+      </div>
 
-        {/* Options display */}
-        {currentQuestion && !isLoading && displayOptions.length > 0 && (
-          <div className="pt-2">
-            {shouldShowCards ? (
+      {/* Input controls area - fixed at bottom */}
+      {currentQuestion && !isLoading && (
+        <div className="shrink-0 px-4 py-3 border-t bg-background/50">
+          {/* Options display */}
+          {displayOptions.length > 0 && (
+            shouldShowCards ? (
               <ChatOptionCards
                 options={displayOptions}
                 selected={selectedOptions}
@@ -156,24 +223,20 @@ export function ChatContainer({
                 multiSelect={currentQuestion.type === "multi-select"}
                 maxSelections={currentQuestion.validation?.maxSelected}
               />
-            )}
-          </div>
-        )}
+            )
+          )}
 
-        {/* Text input for text-type questions */}
-        {currentQuestion?.type === "text" && !isLoading && (
-          <div className="pt-2">
+          {/* Text input for text-type questions */}
+          {currentQuestion.type === "text" && (
             <ChatInput
               onSend={onSendMessage}
               placeholder={t("chat.inputPlaceholder")}
               disabled={isLoading}
             />
-          </div>
-        )}
+          )}
 
-        {/* Currency input for budget questions */}
-        {currentQuestion?.type === "currency-input" && !isLoading && onBudgetChange && onBudgetCurrencyChange && (
-          <div className="pt-2">
+          {/* Currency input for budget questions */}
+          {currentQuestion.type === "currency-input" && onBudgetChange && onBudgetCurrencyChange && (
             <CurrencyInput
               value={budgetValue}
               onChange={onBudgetChange}
@@ -181,12 +244,10 @@ export function ChatContainer({
               onCurrencyChange={onBudgetCurrencyChange}
               locale={locale}
             />
-          </div>
-        )}
+          )}
 
-        {/* Income/Expenses input for finances questions */}
-        {currentQuestion?.type === "income-expenses" && !isLoading && onIncomeChange && onExpensesChange && (
-          <div className="pt-2">
+          {/* Income/Expenses input for finances questions */}
+          {currentQuestion.type === "income-expenses" && onIncomeChange && onExpensesChange && (
             <IncomeExpensesInput
               income={incomeValue}
               expenses={expensesValue}
@@ -202,15 +263,74 @@ export function ChatContainer({
                 disposableLabel: t("questions.finances.disposableLabel"),
               }}
             />
-          </div>
-        )}
+          )}
 
-        <div ref={messagesEndRef} />
-      </div>
+          {/* Country select for single country */}
+          {currentQuestion.type === "country-select" && onCountryChange && (
+            <CountrySelect
+              value={countryValue}
+              onChange={(val) => onCountryChange(val as string)}
+              autoDetect={currentQuestion.id === "current_country"}
+              placeholder={t("questions.current_country.title")}
+              showPopular
+            />
+          )}
+
+          {/* Country multi-select for target locations */}
+          {currentQuestion.type === "country-multi-select" && onCountriesChange && (
+            <CountrySelect
+              value={countriesValue}
+              onChange={(val) => onCountriesChange(val as string[])}
+              multiple
+              maxSelections={currentQuestion.validation?.maxSelected || 5}
+              placeholder={t("questions.location.title")}
+              showPopular
+            />
+          )}
+
+          {/* Budget slider (legacy) */}
+          {currentQuestion.type === "budget-slider" && onBudgetChange && (
+            <BudgetSlider
+              value={budgetValue}
+              onChange={onBudgetChange}
+              currency={budgetCurrency}
+            />
+          )}
+
+          {/* Budget range input */}
+          {currentQuestion.type === "budget-range" && onBudgetMinChange && onBudgetMaxChange && onBudgetCurrencyChange && (
+            <BudgetRangeInput
+              minValue={budgetMinValue}
+              maxValue={budgetMaxValue}
+              onMinChange={onBudgetMinChange}
+              onMaxChange={onBudgetMaxChange}
+              currency={budgetCurrency}
+              onCurrencyChange={onBudgetCurrencyChange}
+              locale={locale}
+            />
+          )}
+
+          {/* Open text for special requirements */}
+          {currentQuestion.type === "open-text" && onOpenTextChange && (
+            <div>
+              <Textarea
+                value={openTextValue}
+                onChange={(e) => onOpenTextChange(e.target.value)}
+                placeholder={t("questions.requirements.placeholder")}
+                maxLength={currentQuestion.validation?.maxLength || 500}
+                className="min-h-[80px] resize-none"
+              />
+              <p className="text-xs text-muted-foreground mt-1 text-end">
+                {openTextValue.length}/{currentQuestion.validation?.maxLength || 500}
+              </p>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Navigation buttons */}
-      <div className="px-4 py-3 border-t bg-background/80 backdrop-blur-sm">
-        <div className="flex items-center justify-between gap-3">
+      <div className="shrink-0 px-4 py-2 border-t bg-background/80 backdrop-blur-sm">
+        <div className="flex items-center justify-between gap-2">
           <Button
             variant="ghost"
             size="sm"

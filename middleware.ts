@@ -14,6 +14,14 @@ const ROLE_DASHBOARDS: Record<UserRole, string> = {
   mortgage_advisor: "/dashboard/mortgage",
 };
 
+// Role-specific onboarding routes for professionals
+const ROLE_ONBOARDING: Record<UserRole, string | null> = {
+  investor: "/onboarding", // Chat-based onboarding
+  broker: "/onboarding/broker",
+  lawyer: "/onboarding/lawyer",
+  mortgage_advisor: "/onboarding/mortgage-advisor",
+};
+
 // Routes that require specific roles
 const ROLE_ROUTES: Record<string, UserRole> = {
   "/dashboard/broker": "broker",
@@ -37,7 +45,15 @@ const AUTH_ROUTES = [
   "/welcome",
   "/chat",
   "/summary",
+  "/onboarding",
 ];
+
+// Professional onboarding routes (mapped to their roles)
+const PROFESSIONAL_ONBOARDING_ROUTES: Record<string, UserRole> = {
+  "/onboarding/broker": "broker",
+  "/onboarding/lawyer": "lawyer",
+  "/onboarding/mortgage-advisor": "mortgage_advisor",
+};
 
 // Create the next-intl middleware
 const intlMiddleware = createIntlMiddleware(routing);
@@ -104,6 +120,23 @@ function isValidRole(role: unknown): role is UserRole {
   );
 }
 
+/**
+ * Check if user is on their own professional onboarding route
+ */
+function isOnOwnOnboardingRoute(pathname: string, role: UserRole): boolean {
+  const pathWithoutLocale = stripLocale(pathname);
+  const requiredRole = PROFESSIONAL_ONBOARDING_ROUTES[pathWithoutLocale];
+  return requiredRole === role;
+}
+
+/**
+ * Check if user is on any onboarding route
+ */
+function isOnOnboardingRoute(pathname: string): boolean {
+  const pathWithoutLocale = stripLocale(pathname);
+  return pathWithoutLocale.startsWith("/onboarding");
+}
+
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const locale = getLocale(pathname);
@@ -158,6 +191,61 @@ export async function middleware(request: NextRequest) {
       const correctDashboard = ROLE_DASHBOARDS[role];
       const redirectUrl = new URL(`/${locale}${correctDashboard}`, request.url);
       return NextResponse.redirect(redirectUrl);
+    }
+
+    // For professional roles, check if they're trying to access a professional onboarding
+    // route that's not their own - redirect them to their own onboarding
+    const pathWithoutLocale = stripLocale(pathname);
+    const onboardingRole = PROFESSIONAL_ONBOARDING_ROUTES[pathWithoutLocale];
+    if (onboardingRole && onboardingRole !== role) {
+      // Redirect to their own onboarding or dashboard
+      const ownOnboarding = ROLE_ONBOARDING[role];
+      if (ownOnboarding) {
+        const redirectUrl = new URL(`/${locale}${ownOnboarding}`, request.url);
+        return NextResponse.redirect(redirectUrl);
+      }
+    }
+
+    // For professional roles accessing dashboard, check if profile is complete
+    // Skip this check if they're already on an onboarding page
+    if (
+      ["broker", "lawyer", "mortgage_advisor"].includes(role) &&
+      !isOnOnboardingRoute(pathname)
+    ) {
+      // Check profile completion in database
+      let profileComplete = false;
+
+      if (role === "broker") {
+        const { data } = await supabase
+          .from("broker_profiles")
+          .select("profile_completed")
+          .eq("user_id", user.id)
+          .single();
+        profileComplete = data?.profile_completed || false;
+      } else if (role === "lawyer") {
+        const { data } = await supabase
+          .from("lawyer_profiles")
+          .select("profile_completed")
+          .eq("user_id", user.id)
+          .single();
+        profileComplete = data?.profile_completed || false;
+      } else if (role === "mortgage_advisor") {
+        const { data } = await supabase
+          .from("mortgage_advisor_profiles")
+          .select("profile_completed")
+          .eq("user_id", user.id)
+          .single();
+        profileComplete = data?.profile_completed || false;
+      }
+
+      // Redirect to onboarding if profile not complete
+      if (!profileComplete) {
+        const onboardingUrl = ROLE_ONBOARDING[role];
+        if (onboardingUrl) {
+          const redirectUrl = new URL(`/${locale}${onboardingUrl}`, request.url);
+          return NextResponse.redirect(redirectUrl);
+        }
+      }
     }
   }
 

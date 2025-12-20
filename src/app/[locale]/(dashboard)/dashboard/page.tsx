@@ -5,9 +5,11 @@ import { GlassPanel } from "@/components/shared";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PropertyCard } from "@/components/marketplace/property-card";
+import { OnboardingBanner, OnboardingStatusCard } from "@/components/dashboard";
 import { User as UserIcon, Heart, Building2, TrendingUp, Bell, ArrowRight, Sparkles } from "lucide-react";
 import { getSavedProperties, getProperties } from "../properties/actions";
 import type { PropertyWithExtras } from "@/lib/marketplace/types";
+import { getTotalSteps } from "@/lib/onboarding";
 
 /**
  * DashboardPage - Main dashboard overview
@@ -30,6 +32,30 @@ export default async function DashboardPage() {
   const userEmail = user?.email;
   const userName = user?.user_metadata?.full_name || userEmail?.split("@")[0] || "Investor";
 
+  // Get onboarding status
+  const totalSteps = getTotalSteps();
+  let onboardingStep = 0;
+  let isOnboardingComplete = false;
+
+  if (user) {
+    const { data: profile } = await supabase
+      .from("investor_profiles")
+      .select("onboarding_step, onboarding_completed")
+      .eq("user_id", user.id)
+      .single();
+
+    if (profile) {
+      onboardingStep = profile.onboarding_step || 0;
+      isOnboardingComplete = profile.onboarding_completed || false;
+    }
+  }
+
+  // Determine profile strength based on completion
+  const profileStrength: "weak" | "moderate" | "strong" =
+    isOnboardingComplete ? "strong" :
+    onboardingStep >= 7 ? "moderate" :
+    "weak";
+
   // Fetch real data
   const savedProperties = await getSavedProperties();
   const savedCount = savedProperties.length;
@@ -46,6 +72,15 @@ export default async function DashboardPage() {
 
   return (
     <div className="max-w-7xl mx-auto space-y-8">
+      {/* Onboarding Banner - Shows when onboarding is incomplete */}
+      {!isOnboardingComplete && (
+        <OnboardingBanner
+          currentStep={onboardingStep}
+          totalSteps={totalSteps}
+          isComplete={isOnboardingComplete}
+        />
+      )}
+
       {/* Welcome section */}
       <GlassPanel intensity="light" className="p-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -68,9 +103,17 @@ export default async function DashboardPage() {
       </GlassPanel>
 
       {/* Dashboard stats cards */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Onboarding Status Card */}
+        <OnboardingStatusCard
+          currentStep={onboardingStep}
+          totalSteps={totalSteps}
+          isComplete={isOnboardingComplete}
+          profileStrength={profileStrength}
+        />
+
         <Link href={`/${locale}/properties/saved`}>
-          <Card className="hover:border-primary/50 transition-colors cursor-pointer">
+          <Card className="hover:border-primary/50 transition-colors cursor-pointer h-full">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">{t("cards.properties.title")}</CardTitle>
               <Heart className="h-4 w-4 text-red-500" />

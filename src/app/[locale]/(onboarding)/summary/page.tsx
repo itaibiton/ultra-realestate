@@ -290,7 +290,7 @@ export default function SummaryPage() {
       >
         {isSubmitting ? (
           <>
-            <Loader2 className="w-4 h-4 animate-spin" />
+            <Loader2 className="w-4 h-4 me-2 animate-spin" />
             {t("summary.processing")}
           </>
         ) : (

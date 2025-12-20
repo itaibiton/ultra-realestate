@@ -1,9 +1,10 @@
 import { Globe } from "lucide-react";
-import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+import { setRequestLocale } from "next-intl/server";
+import { requireAuth } from "@/lib/auth";
 
 interface OnboardingLayoutProps {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }
 
 /**
@@ -15,19 +16,18 @@ interface OnboardingLayoutProps {
  * - GlobalNest logo
  * - Auth protection (redirects if not logged in)
  */
-export default async function OnboardingLayout({ children }: OnboardingLayoutProps) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+export default async function OnboardingLayout({ children, params }: OnboardingLayoutProps) {
+  // Set locale for next-intl
+  const { locale } = await params;
+  setRequestLocale(locale);
 
-  // Redirect to sign-in if not authenticated
-  if (!user) {
-    redirect("/sign-in");
-  }
+  // Auth check - redirects if not logged in
+  await requireAuth();
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-background via-background to-blue-950/10">
+    <div className="h-screen flex flex-col overflow-hidden bg-gradient-to-br from-background via-background to-blue-950/10">
       {/* Header with logo */}
-      <header className="w-full px-6 py-4">
+      <header className="shrink-0 w-full px-6 py-3">
         <div className="flex items-center gap-2">
           <Globe className="h-6 w-6 text-blue-500" />
           <span className="text-xl font-semibold">GlobalNest</span>
@@ -35,8 +35,8 @@ export default async function OnboardingLayout({ children }: OnboardingLayoutPro
       </header>
 
       {/* Main content */}
-      <main className="flex-1 flex items-center justify-center px-4 py-8">
-        <div className="w-full max-w-2xl">
+      <main className="flex-1 flex items-stretch justify-center px-4 md:px-6 lg:px-8 pb-4 min-h-0">
+        <div className="w-full max-w-6xl h-full">
           {children}
         </div>
       </main>

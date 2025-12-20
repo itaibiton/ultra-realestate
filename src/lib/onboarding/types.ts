@@ -9,7 +9,13 @@ export type QuestionType =
   | 'text'
   | 'number'
   | 'currency-input'
-  | 'income-expenses';
+  | 'income-expenses'
+  | 'country-select'        // Single country selection with flags
+  | 'country-multi-select'  // Multiple country selection with flags
+  | 'budget-slider'         // Budget slider (legacy)
+  | 'budget-range'          // Budget range with min/max inputs
+  | 'risk-slider'           // Risk tolerance slider
+  | 'open-text';            // Free text with AI response
 
 export type QuestionCategory =
   | 'budget'
@@ -18,7 +24,11 @@ export type QuestionCategory =
   | 'property'
   | 'timeline'
   | 'experience'
-  | 'finances';
+  | 'finances'
+  | 'personal'      // NEW: Personal info (country, citizenship)
+  | 'risk'          // NEW: Risk tolerance
+  | 'requirements'  // NEW: Special requirements
+  | 'contact';      // NEW: Contact preferences
 
 export interface QuestionOption {
   id: string;
@@ -45,6 +55,10 @@ export interface Question {
     minSelected?: number;
     maxSelected?: number;
   };
+  // NEW: AI integration settings
+  aiEnabled?: boolean;      // Whether to use AI for responses
+  aiInsights?: boolean;     // Whether to generate insights
+  allowOpenText?: boolean;  // Allow free text in addition to options
 }
 
 export interface OnboardingStep {
@@ -96,16 +110,46 @@ export type ExperienceLevel =
   | 'some_experience'
   | 'experienced';
 
+// NEW: Risk tolerance levels
+export type RiskTolerance =
+  | 'conservative'
+  | 'moderate'
+  | 'aggressive';
+
+// NEW: Contact preferences
+export type ContactPreference =
+  | 'email'
+  | 'whatsapp'
+  | 'phone';
+
 export interface InvestorProfileData {
+  // Personal
+  currentCountry?: string;
+  citizenship?: string;
+
+  // Budget
   budget: number;
   budgetCurrency: string;
+  budgetRangeMin?: number;
+  budgetRangeMax?: number;
+
+  // Preferences
   purpose: PurchasePurpose;
   preferredLocations: string[];
   propertyTypes: PropertyType[];
   timeline: PurchaseTimeline;
+
+  // Risk & Experience
+  riskTolerance?: RiskTolerance;
   experienceLevel: ExperienceLevel;
+
+  // Finances
   monthlyIncome: number;
   monthlyExpenses: number;
+
+  // Additional
+  specialRequirements?: string;
+  contactPreference?: ContactPreference;
 }
 
 // Professionals types
@@ -115,4 +159,25 @@ export interface ProfessionalRecommendation {
   type: ProfessionalType;
   reason: string;
   priority: 'high' | 'medium' | 'low';
+}
+
+// AI Response types
+export interface AIOnboardingResponse {
+  message: string;
+  followUp?: string;
+  insights?: string[];
+}
+
+export interface OnboardingContext {
+  currentCountry?: string;
+  citizenship?: string;
+  budget?: number;
+  budgetCurrency?: string;
+  investmentPurpose?: string;
+  targetLocations?: string[];
+  propertyTypes?: string[];
+  timeline?: string;
+  riskTolerance?: string;
+  experienceLevel?: string;
+  specialRequirements?: string;
 }
